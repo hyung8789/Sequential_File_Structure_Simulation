@@ -1,0 +1,54 @@
+마스터 파일에 기록할 내용(레코드 수 : 7)
+2018A000 Kim CE 1 100
+2017B000 Park IE 2 60
+2015Z000 Jin ME 2 50
+2015A001 Lee EE 4 100
+2016C000 Kim AR 1 50
+2014D000 Park CE 2 70
+2013A000 Jin CE 4 20
+
+트랜잭션 파일에 기록할 내용(레코드 수 : 6)
+D 2014D000 //마스터 파일에 존재하는 키 값
+D 2019A000 //마스터 파일에 존재하지 않는 키 값(트랜잭션 오류)
+I 2015A001 trans_Lee AR 2 50 //마스터 파일에 존재하는 키 값(트랜잭션 오류)
+I 2019B000 trans_Kim ME 1 100 //마스터 파일에 존재하지 않는 키 값
+C 2013A000 trans_Jin CE 3 50 //마스터 파일에 존재하는 키 값
+C 2018Z000 trans_Lee AR 2 50 //마스터 파일에 존재하지 않는 키 값(트랜잭션 오류)
+
+D 2014D000
+D 2019A000
+I 2015A001 trans_Lee AR 2 50
+I 2019B000 trans_Kim ME 1 100
+C 2013A000 trans_Jin CE 3 50
+C 2018Z000 trans_Lee AR 2 50
+
+마스터 파일에 키 값 순으로 기록된 결과
+2013A000 Jin CE 4 20
+2014D000 Park CE 2 70
+2015A001 Lee EE 4 100
+2016C000 Kim AR 1 50
+2017B000 Park IE 2 60
+2018A000 Kim CE 1 100
+
+트랜잭션 파일에 키 값 순으로 기록된 결과
+2013A000 C trans_Jin CE 3 50
+2014D000 D
+2015A001 I trans_Lee AR 2 50
+2018Z000 C trans_Lee AR 2 50
+2019A000 D
+2019B000 I trans_Kim ME 1 100
+
+연산과정에 따른 순서 
+마스터 파일의 레코드에 대한 처리가 먼저 끝나고 남아있는 트랜잭션 레코드들
+2018Z000 C trans_Lee AR 2 50
+2019A000 D
+2019B000 I trans_Kim ME 1 100
+에 대해서 처리해야함
+
+예상 갱신 후 결과값
+2013A000C trans_Jin CE 3 50
+2015A001 Lee EE 4 100
+2016C000 Kim AR 1 50
+2017B000 Park IE 2 60
+2018A000 Kim CE 1 100
+2019B000 trans_Kim ME 1 100
