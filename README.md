@@ -13,7 +13,7 @@
 <strong>< Sequential File Structure Simulator Functions List ></strong>
 
 | Index | Functions |
-|:---:|:---:|
+|:---:|:---|
 | (1) | Error detection and output of input data through editing |
 | (2) | Outputs student information master file (before and after renewal) |
 | (3) | Update student information master file via transaction file (add, delete, modify) |
@@ -23,11 +23,6 @@
 <br></br>
 
 <strong>< Algorithm for update Master File ></strong>
- <strong>
-- masterKey : Key values for the master record that can be sorted<br>
-- transKey : Key values for the transaction record that can be sorted
-</strong>
-<br></br>
 
 | Case | Action |
 |:---:|:---|
@@ -35,5 +30,9 @@
 | masterKey == transKey | (1) Insertion Operation : Duplicate record error, read next transaction record because the master file already has a record with the same key value <br> (2) Deletion Operation : Ignore existing master records, read next master and transaction records without processing <br> (3) Correction(Modify) Operation : Writes the contents of an existing master record to a new master file as the contents of a transaction record, and reads the next master and transaction record |
 | masterKey > transKey | (1) Insertion Operation : Insert transaction record into new master file, read next transaction record <br> (2) Deletion Operation : Error because no matching master record exists, read next transaction record <br> (3) Correction(Modify) Operation : Error because no matching master record exists, read next transaction record |
 
-
+ <strong>
+- masterKey : Key values for the master record that can be sorted<br>
+- transKey : Key values for the transaction record that can be sorted
+</strong>
+<br></br>
 
