@@ -7,18 +7,17 @@
 
 - Batch processing creates a transaction file of what you want to do with an existing master file (add a new record, delete an existing record, modify an existing record), and processes the existing master file and transaction file according to the key value (data value of a record that can be sorted) and the action you want to perform (Insert, Delete, Correct) when you renew the new master file.
 
-- This Sequential FIle Structure Simulator is a program that simulates key sequential files and functions are shown in the following tabl
+- This Sequential FIle Structure Simulator is a program that simulates key sequential files and functions are shown in the following table
 
 
-<strong>< Sector Mapping Method, Block Mapping Method Command List ></strong>
+<strong>< Sequential File Structure Simulator Functions List ></strong>
 
-| Command | Action |
 |---|:---:|
-| init x or i x | Create x MB Storage File |
-| read LSN or r LSN | Read data at Logical Sector Num(LSN) Position |
-| write LSN data or w LSN data | Write data at Logical Sector Num(LSN) Position |
-| change | Change Mapping Method |
-| print | Print Mapping Table(LSN -> PSN or LBN -> PBN) |
+| (1) | Error detection and output of input data through editing |
+| (2) | Outputs student information master file (before and after renewal) |
+| (3) | Update student information master file via transaction file (add, delete, modify) |
+| (4) | Configuring and printing transaction files for updates |
+| (5) | Output error logs during editing and transaction error logs during master file renewal |
 
 <br></br>
 
