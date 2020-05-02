@@ -26,11 +26,15 @@
   
 | Case | Action |
 |---|:---:|
-| init x or i x | Create x MB Storage File |
+| masterKey < transKey | Create x MB Storage File |
 | read PSN or r PSN | Read data at Physical Sector Num(PSN) Position |
 | write PSN data or w PSN data | Write data at Physical Sector Num(PSN) Position |
 | erase PBN or e PBN | Erase data at Physical Block Num(PBN) Position |
 | change | Change Mapping Method |
 
+<strong>
+- masterKey : Key values for the master record that can be sorted
+- transKey : Key values for the transaction record that can be sorted
+</strong>
 <br></br>
 
