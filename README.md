@@ -7,13 +7,13 @@
 
 - Batch processing creates a transaction file of what you want to do with an existing master file (add a new record, delete an existing record, modify an existing record), and processes the existing master file and transaction file according to the key value (data value of a record that can be sorted) and the action you want to perform (Insert, Delete, Correct) when you renew the new master file.
 
-- This Sequential FIle Structure Simulator is a program that simulates key sequential files and functions are shown in the following table
+- This Sequential File Structure Simulator is a program that simulates key sequential files and functions are shown in the following table
 
 <br></br>
 <strong>< Sequential File Structure Simulator Functions List ></strong>
 
 | Index | Functions |
-|---|:---:|
+|:---:|:---:|
 | (1) | Error detection and output of input data through editing |
 | (2) | Outputs student information master file (before and after renewal) |
 | (3) | Update student information master file via transaction file (add, delete, modify) |
@@ -22,21 +22,15 @@
 
 <br></br>
 
-<strong>< Normal Mode (with not use Any Mapping Method) Command List ></strong>
+<strong>< Algorithm for update Master File ></strong>
   
-| Command | Action |
+| Case | Action |
 |---|:---:|
 | init x or i x | Create x MB Storage File |
 | read PSN or r PSN | Read data at Physical Sector Num(PSN) Position |
 | write PSN data or w PSN data | Write data at Physical Sector Num(PSN) Position |
 | erase PBN or e PBN | Erase data at Physical Block Num(PBN) Position |
 | change | Change Mapping Method |
-
-<br></br>
-
-
-- Simulator that creates flash memory, reads data in physical sectors, inputs data, and erases data in blocks
-- No limit on FlashMem Storage File creation capacity<br>
 
 <br></br>
 
