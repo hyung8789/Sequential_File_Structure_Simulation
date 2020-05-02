@@ -25,12 +25,10 @@
 <strong>< Algorithm for update Master File ></strong>
   
 | Case | Action |
-|---|:---:|
-| masterKey < transKey | Create x MB Storage File |
-| read PSN or r PSN | Read data at Physical Sector Num(PSN) Position |
-| write PSN data or w PSN data | Write data at Physical Sector Num(PSN) Position |
-| erase PBN or e PBN | Erase data at Physical Block Num(PBN) Position |
-| change | Change Mapping Method |
+|:---:|:---:|
+| masterKey < transKey | If the key value in the transaction file is bigger than the master key value, then there is no record to apply to the existing master file, so copy the existing master record to the new master file and read the next master record |
+| masterKey == transKey | Read data at Physical Sector Num(PSN) Position |
+| masterKey > transKey | Write data at Physical Sector Num(PSN) Position |
 
 <strong>
 - masterKey : Key values for the master record that can be sorted<br>
