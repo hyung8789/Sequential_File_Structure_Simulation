@@ -1,4 +1,5 @@
-# Sequential_File_Structure_Simulator (순차 파일 구조 시뮬레이터)
+# Sequential_File_Structure_Simulator 
+<strong>(순차 파일 구조 시뮬레이터)</strong>
 
 - A sequential file is the most basic method of organizing records. It is a method of sequentially storing records in sequence when creating a file.
 
