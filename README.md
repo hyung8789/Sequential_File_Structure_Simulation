@@ -12,7 +12,7 @@
 
 <strong>< Sequential File Structure Simulator Functions List ></strong>
 
-| Index | Function |
+| Index | Functions |
 |---|:---:|
 | (1) | Error detection and output of input data through editing |
 | (2) | Outputs student information master file (before and after renewal) |
