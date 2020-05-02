@@ -28,6 +28,7 @@
 - transKey : Key values for the transaction record that can be sorted
 </strong>
 <br></br>
+
 | Case | Action |
 |:---:|:---|
 | masterKey < transKey | If the key value in the transaction file is bigger than the master key value, then there is no record to apply to the existing master file, so copy the existing master record to the new master file and read the next master record |
