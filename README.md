@@ -9,9 +9,9 @@
 
 - This Sequential FIle Structure Simulator is a program that simulates key sequential files and functions are shown in the following table
 
-
-<strong>< Sequential File Structure Simulator Functions List ></strong>
 <br></br>
+<strong>< Sequential File Structure Simulator Functions List ></strong>
+
 | Index | Functions |
 |---|:---:|
 | (1) | Error detection and output of input data through editing |
