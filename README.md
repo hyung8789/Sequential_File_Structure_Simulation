@@ -11,7 +11,7 @@
 
 
 <strong>< Sequential File Structure Simulator Functions List ></strong>
-
+<br></br>
 | Index | Functions |
 |---|:---:|
 | (1) | Error detection and output of input data through editing |
