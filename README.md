@@ -33,7 +33,7 @@
 | change | Change Mapping Method |
 
 <strong>
-- masterKey : Key values for the master record that can be sorted<br></br>
+- masterKey : Key values for the master record that can be sorted<br>
 - transKey : Key values for the transaction record that can be sorted
 </strong>
 <br></br>
