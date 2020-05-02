@@ -28,7 +28,7 @@
 |:---:|:---|
 | masterKey < transKey | If the key value in the transaction file is bigger than the master key value, then there is no record to apply to the existing master file, so copy the existing master record to the new master file and read the next master record |
 | masterKey == transKey | (1) Insertion Operation : Duplicate record error, read next transaction record because the master file already has a record with the same key value <br> (2) Deletion Operation : Ignore existing master records, read next master and transaction records without processing <br> (3) Correction(Modify) Operation : Writes the contents of an existing master record to a new master file as the contents of a transaction record, and reads the next master and transaction record |
-| masterKey > transKey |  |
+| masterKey > transKey | (1) Insertion Operation : Insert transaction record into new master file, read next transaction record <br> (2) Deletion Operation : Error because no matching master record exists, read next transaction record <br> (3) Correction(Modify) Operation : Error because no matching master record exists, read next transaction record |
 
 <strong>
 - masterKey : Key values for the master record that can be sorted<br>
