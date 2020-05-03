@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h> //fscanf,fprintf,fwrite,fread
 #include <stdlib.h> //standard lib
-#include <iostream> //ÀÔÃâ·Â
+#include <iostream> //ì…ì¶œë ¥
 #include <string.h> //strcpy
 #include <sstream> //stringstream
 #include <windows.h> //sys command
@@ -9,110 +9,110 @@
 #include <stdbool.h> //boolean
 #include <type_traits> //std::underlying_type
 
-//NULL_VALUE : ¿¬»êÄÚµå, ÇĞ¹ø, ÀÌ¸§, ÇĞ°ú¿¡ ´ëÇØ °ªÀ» ÇÒ´çÇÏÁö ¾Ê±â À§ÇÑ ¹®ÀÚ »ó¼ö ¼±¾ğ
- //EOF_KEY_VALUE : (°¡Á¤)ÆÄÀÏÀÇ ³¡À» ³ªÅ¸³»´Â EOF´Â ¾î¶² ·¹ÄÚµå Å° °ªº¸´Ù Å©´Ù
+//NULL_VALUE : ì—°ì‚°ì½”ë“œ, í•™ë²ˆ, ì´ë¦„, í•™ê³¼ì— ëŒ€í•´ ê°’ì„ í• ë‹¹í•˜ì§€ ì•Šê¸° ìœ„í•œ ë¬¸ì ìƒìˆ˜ ì„ ì–¸
+//EOF_KEY_VALUE : (ê°€ì •)íŒŒì¼ì˜ ëì„ ë‚˜íƒ€ë‚´ëŠ” EOFëŠ” ì–´ë–¤ ë ˆì½”ë“œ í‚¤ ê°’ë³´ë‹¤ í¬ë‹¤
 constexpr auto NULL_VALUE = "";
-constexpr auto EOF_KEY_VALUE = "-1"; //ÆÄÀÏÀÇ ³¡ÀÏ °æ¿ì ·¹ÄÚµå Å°¿¡ ÇÒ´çÇÏ´Â °ª
+constexpr auto EOF_KEY_VALUE = "-1"; //íŒŒì¼ì˜ ëì¼ ê²½ìš° ë ˆì½”ë“œ í‚¤ì— í• ë‹¹í•˜ëŠ” ê°’
 
-#define EXCEPTION_HANDLING_VALUE -999 //ÇĞ³â, Á¡¼ö¿¡ ³ª¿Ã ¼ö ¾ø´Â ¿¹¿Ü °ª ¼±¾ğ
-#define SINGLE_LINE_BUFFER_SIZE 512 //È¿À²¼ºÀ» À§ÇØ ÇÑ ÁÙ ÀĞÀ» ¶§ ¹öÆÛ Å©±â¸¦ byte´ÜÀ§ÀÇ ºí·Ï °æ°èÄ¡ Å©±â·Î ¼³Á¤
+#define EXCEPTION_HANDLING_VALUE -999 //í•™ë…„, ì ìˆ˜ì— ë‚˜ì˜¬ ìˆ˜ ì—†ëŠ” ì˜ˆì™¸ ê°’ ì„ ì–¸
+#define SINGLE_LINE_BUFFER_SIZE 512 //íš¨ìœ¨ì„±ì„ ìœ„í•´ í•œ ì¤„ ì½ì„ ë•Œ ë²„í¼ í¬ê¸°ë¥¼ byteë‹¨ìœ„ì˜ ë¸”ë¡ ê²½ê³„ì¹˜ í¬ê¸°ë¡œ ì„¤ì •
 
-#define OP_LENGTH 1 //¿¬»ê ÄÚµå ¹®ÀÚ ±æÀÌ
-#define DPT_LENGTH 2 //ÇĞ°ú ¹®ÀÚ ±æÀÌ
-#define NAME_LENGTH 10 //ÀÌ¸§ ¹®ÀÚ ±æÀÌ
-#define ID_LENGTH 8 //ÇĞ¹ø ¹®ÀÚ ±æÀÌ
+#define OP_LENGTH 1 //ì—°ì‚° ì½”ë“œ ë¬¸ì ê¸¸ì´
+#define DPT_LENGTH 2 //í•™ê³¼ ë¬¸ì ê¸¸ì´
+#define NAME_LENGTH 10 //ì´ë¦„ ë¬¸ì ê¸¸ì´
+#define ID_LENGTH 8 //í•™ë²ˆ ë¬¸ì ê¸¸ì´
 
-//Insert, Delete, Correct ¿­°ÅÇü ¼±¾ğ
+//Insert, Delete, Correct ì—´ê±°í˜• ì„ ì–¸
 enum class OPERATION_CODE : char{
-	//ÇĞ»ı °´Ã¼ »ı¼º ½Ã¿¡ ¿¬»êÄÚµå¸¦ Á¤ÀÇµÈ OPERATION_CODEÁß¿¡ ÇÒ´ç
+	//í•™ìƒ ê°ì²´ ìƒì„± ì‹œì— ì—°ì‚°ì½”ë“œë¥¼ ì •ì˜ëœ OPERATION_CODEì¤‘ì— í• ë‹¹
 	no_operation = NULL,
 	Insert = 'I',
 	Delete = 'D',
 	Correct = 'C'
 };
 
-//¿­°ÅÇü => char º¯È¯ ÅÆÇÃ¸´
+//ì—´ê±°í˜• => char ë³€í™˜ íƒ¬í”Œë¦¿
 template<typename Enum>
 constexpr auto to_char(Enum value) -> typename std::underlying_type<Enum>::type
 {
 	return static_cast<typename std::underlying_type<Enum>::type>(value);
 };
 
-class Student_string_data //ÀÔ·Â°ª °Ë»ç¸¦ À§ÇÑ ÇĞ»ı µ¥ÀÌÅÍ ¹®ÀÚ¿­ Å¬·¡½º
+class Student_string_data //ì…ë ¥ê°’ ê²€ì‚¬ë¥¼ ìœ„í•œ í•™ìƒ ë°ì´í„° ë¬¸ìì—´ í´ë˜ìŠ¤
 {
 public:
 	Student_string_data();
 
-	std::string str_op_code; //¿¬»êÄÚµå
-	std::string str_student_id; //ÇĞ¹ø
-	std::string str_name; //ÀÌ¸§
-	std::string str_dpt; //ÇĞ°ú
-	std::string str_grade; //ÇĞ³â
-	std::string str_score; //Á¡¼ö
+	std::string str_op_code; //ì—°ì‚°ì½”ë“œ
+	std::string str_student_id; //í•™ë²ˆ
+	std::string str_name; //ì´ë¦„
+	std::string str_dpt; //í•™ê³¼
+	std::string str_grade; //í•™ë…„
+	std::string str_score; //ì ìˆ˜
 
-	void clear_all(); //¸ğµç ¹®ÀÚ¿­ÀÇ ³»¿ë »èÁ¦
+	void clear_all(); //ëª¨ë“  ë¬¸ìì—´ì˜ ë‚´ìš© ì‚­ì œ
 };
 
 class Student
 {
 public:
-	//EDIT ¿À·ù °ËÃâÀ» ¸¶Ä£ ÈÄ¿¡ »ı¼º
+	//EDIT ì˜¤ë¥˜ ê²€ì¶œì„ ë§ˆì¹œ í›„ì— ìƒì„±
 
 	Student();
 	Student(const char* ID, const char* name, const char* dpt, int grade, int score);
 	
-	char name[NAME_LENGTH + 1]; //ÀÌ¸§ ('\0' Á¦¿Ü 10ÀÚ¸®)
-	char department[DPT_LENGTH + 1]; //ÇĞ°ú ('\0' Á¦¿Ü 2ÀÚ¸®)
-	int grade; //ÇĞ³â(1 ~ 4)
-	int score; //Á¡¼ö(0 ~ 100)
+	char name[NAME_LENGTH + 1]; //ì´ë¦„ ('\0' ì œì™¸ 10ìë¦¬)
+	char department[DPT_LENGTH + 1]; //í•™ê³¼ ('\0' ì œì™¸ 2ìë¦¬)
+	int grade; //í•™ë…„(1 ~ 4)
+	int score; //ì ìˆ˜(0 ~ 100)
 
-	void get_Student_ID(char* dst_buffer); //dst_buffer¿¡ ÇĞ¹ø ¹İÈ¯
+	void get_Student_ID(char* dst_buffer); //dst_bufferì— í•™ë²ˆ ë°˜í™˜
 
-protected: //ÇĞ¹øÀº »çÀü ¼ø ºñ±³¸¦ À§ÇØ ¼ıÀÚ,¹®ÀÚ·Î ±¸¼ºµÈ °íÁ¤µÈ ±æÀÌÀÇ °ª
-	char Student_ID[ID_LENGTH + 1]; //ÇĞ¹ø(¼ıÀÚ,¹®ÀÚ Á¶ÇÕ, '\0' Á¦¿Ü 8ÀÚ¸®)
+protected: //í•™ë²ˆì€ ì‚¬ì „ ìˆœ ë¹„êµë¥¼ ìœ„í•´ ìˆ«ì,ë¬¸ìë¡œ êµ¬ì„±ëœ ê³ ì •ëœ ê¸¸ì´ì˜ ê°’
+	char Student_ID[ID_LENGTH + 1]; //í•™ë²ˆ(ìˆ«ì,ë¬¸ì ì¡°í•©, '\0' ì œì™¸ 8ìë¦¬)
 };
 
-class Student_list : public Student //ÆÄÀÏ ±â·ÏÀ» À§ÇÑ ÇĞ»ı Á¤º¸ ÀÌÁß ¿¬°á¸®½ºÆ® ¹× ¿¬»ê ÄÚµå¸¦ Æ÷ÇÔ
+class Student_list : public Student //íŒŒì¼ ê¸°ë¡ì„ ìœ„í•œ í•™ìƒ ì •ë³´ ì´ì¤‘ ì—°ê²°ë¦¬ìŠ¤íŠ¸ ë° ì—°ì‚° ì½”ë“œë¥¼ í¬í•¨
 {
 public:
 	Student_list();
 	Student_list(const char* op_code, const char* ID, const char* name, const char* dpt, int grade, int score);
 	
-	enum OPERATION_CODE op_code; //¿¬»ê ÄÚµå(Insert, Delete, Correct)
+	enum OPERATION_CODE op_code; //ì—°ì‚° ì½”ë“œ(Insert, Delete, Correct)
 
-	class Student_list* next; //´ÙÀ½ ÇĞ»ı Á¤º¸
-	class Student_list* pre; //ÀÌÀü ÇĞ»ı Á¤º¸
+	class Student_list* next; //ë‹¤ìŒ í•™ìƒ ì •ë³´
+	class Student_list* pre; //ì´ì „ í•™ìƒ ì •ë³´
 };
 
 /*** student function ***/
-bool chk_dpt_list(char** dpt_list_array, int dpt_list_count, char* user_input_dpt); //»ç¿ëÀÚ·ÎºÎÅÍÀÇ ÇĞ°ú ÀÔ·Â °ª °Ë»ç ÇÔ¼ö
-void insertion_sort(Student_list** src_list, const char* op_code, const char* ID, const char* name, const char* dpt, int grade, int score); //Edit ¿À·ù °ËÃâÀ» ¸¶Ä£ µ¥ÀÌÅÍµé·ÎºÎÅÍ »õ·Î¿î ÇĞ»ı °´Ã¼¸¦ »ı¼º ¹× »ğÀÔÁ¤·ÄÇÏ¿© ¸®½ºÆ® »ı¼º
-void create_student_list(Student_list** src_list, char** dpt_list_array, int dpt_list_count, bool flag_use_opcode); //»ç¿ëÀÚ·ÎºÎÅÍ ÇĞ»ı µ¥ÀÌÅÍ¸¦ ÀÔ·Â¹Ş°í Edit ¿À·ù °ËÃâ ½ÇÇà ÈÄ µ¥ÀÌÅÍ¸¦ insertion_sort Àü´Ş
-void deallocate_memory(Student_list** student_list, char** dpt_list_array, int dpt_list_count, int type); //¸Ş¸ğ¸® ÇØÁ¦
+bool chk_dpt_list(char** dpt_list_array, int dpt_list_count, char* user_input_dpt); //ì‚¬ìš©ìë¡œë¶€í„°ì˜ í•™ê³¼ ì…ë ¥ ê°’ ê²€ì‚¬ í•¨ìˆ˜
+void insertion_sort(Student_list** src_list, const char* op_code, const char* ID, const char* name, const char* dpt, int grade, int score); //Edit ì˜¤ë¥˜ ê²€ì¶œì„ ë§ˆì¹œ ë°ì´í„°ë“¤ë¡œë¶€í„° ìƒˆë¡œìš´ í•™ìƒ ê°ì²´ë¥¼ ìƒì„± ë° ì‚½ì…ì •ë ¬í•˜ì—¬ ë¦¬ìŠ¤íŠ¸ ìƒì„±
+void create_student_list(Student_list** src_list, char** dpt_list_array, int dpt_list_count, bool flag_use_opcode); //ì‚¬ìš©ìë¡œë¶€í„° í•™ìƒ ë°ì´í„°ë¥¼ ì…ë ¥ë°›ê³  Edit ì˜¤ë¥˜ ê²€ì¶œ ì‹¤í–‰ í›„ ë°ì´í„°ë¥¼ insertion_sort ì „ë‹¬
+void deallocate_memory(Student_list** student_list, char** dpt_list_array, int dpt_list_count, int type); //ë©”ëª¨ë¦¬ í•´ì œ
 
 /*** time function ***/
-const std::string get_current_time(); //ÇöÀç ½Ã½ºÅÛ ½Ã°£ ¹İÈ¯ ÇÔ¼ö
+const std::string get_current_time(); //í˜„ì¬ ì‹œìŠ¤í…œ ì‹œê°„ ë°˜í™˜ í•¨ìˆ˜
 
 /*** screen I/O function ***/
-//flag_use_opcode : true - ¿¬»êÄÚµå¸¦ Æ÷ÇÔÇÑ ÇĞ»ı ¸®½ºÆ® »ı¼º, false - ÇĞ»ı ¸®½ºÆ® »ı¼º
-void disp_main_menu(); //¸ŞÀÎ ¸Ş´º Ãâ·Â
-void disp_student_description_bar(int file_mode); //ÇĞ»ı Á¤º¸ ¼³¸í Ãâ·Â
-void disp_student_trans_input_bar(char** dpt_list_array, int dpt_list_count); //Æ®·£Àè¼Ç ÆÄÀÏ ÀÛ¼º ½Ã ÀÔ·ÂÇØ¾ß ÇÒ µ¥ÀÌÅÍ Ãâ·Â
-void disp_student_input_bar(char** dpt_list_array, int dpt_list_count); //¸¶½ºÅÍ ÆÄÀÏ ÀÛ¼º ½Ã ÀÔ·ÂÇØ¾ß ÇÒ µ¥ÀÌÅÍ Ãâ·Â
-void disp_log_description_bar(); //·Î±× Å¸ÀÔ¿¡ µû¸¥ ¼³¸í
-void disp_trans_log_description_bar(); //·Î±× Å¸ÀÔ¿¡ µû¸¥ ¼³¸í
-void disp_error_msg(const char* message); //¿À·ù ¸Ş¼¼Áö Ãâ·Â
-int input_log_file_mode(); //·Î±× Ãâ·ÂÀ» À§ÇÑ ·Î±× Å¸ÀÔ ÀÔ·Â
-bool input_replace_master_confirm(); //¸¶½ºÅÍ ÆÄÀÏ °»½Å ´ëÃ¼ È®ÀÎ
-bool input_init_master_confirm(); //ÃÊ±â ¸¶½ºÅÍ ÆÄÀÏ »ı¼º È®ÀÎ
-void input_main_menu(Student_list** src_list, char** dpt_list_array, int dpt_list_count); //¸ŞÀÎ ¸Ş´º¿¡ ´ëÇÑ »ç¿ëÀÚ ÀÔ·Â
+//flag_use_opcode : true - ì—°ì‚°ì½”ë“œë¥¼ í¬í•¨í•œ í•™ìƒ ë¦¬ìŠ¤íŠ¸ ìƒì„±, false - í•™ìƒ ë¦¬ìŠ¤íŠ¸ ìƒì„±
+void disp_main_menu(); //ë©”ì¸ ë©”ë‰´ ì¶œë ¥
+void disp_student_description_bar(int file_mode); //í•™ìƒ ì •ë³´ ì„¤ëª… ì¶œë ¥
+void disp_student_trans_input_bar(char** dpt_list_array, int dpt_list_count); //íŠ¸ëœì­ì…˜ íŒŒì¼ ì‘ì„± ì‹œ ì…ë ¥í•´ì•¼ í•  ë°ì´í„° ì¶œë ¥
+void disp_student_input_bar(char** dpt_list_array, int dpt_list_count); //ë§ˆìŠ¤í„° íŒŒì¼ ì‘ì„± ì‹œ ì…ë ¥í•´ì•¼ í•  ë°ì´í„° ì¶œë ¥
+void disp_log_description_bar(); //ë¡œê·¸ íƒ€ì…ì— ë”°ë¥¸ ì„¤ëª…
+void disp_trans_log_description_bar(); //ë¡œê·¸ íƒ€ì…ì— ë”°ë¥¸ ì„¤ëª…
+void disp_error_msg(const char* message); //ì˜¤ë¥˜ ë©”ì„¸ì§€ ì¶œë ¥
+int input_log_file_mode(); //ë¡œê·¸ ì¶œë ¥ì„ ìœ„í•œ ë¡œê·¸ íƒ€ì… ì…ë ¥
+bool input_replace_master_confirm(); //ë§ˆìŠ¤í„° íŒŒì¼ ê°±ì‹  ëŒ€ì²´ í™•ì¸
+bool input_init_master_confirm(); //ì´ˆê¸° ë§ˆìŠ¤í„° íŒŒì¼ ìƒì„± í™•ì¸
+void input_main_menu(Student_list** src_list, char** dpt_list_array, int dpt_list_count); //ë©”ì¸ ë©”ë‰´ì— ëŒ€í•œ ì‚¬ìš©ì ì…ë ¥
 
-/*** file function : ÇĞ»ı Á¤º¸ ÀÔ·Â, ¸¶½ºÅÍ ÆÄÀÏ ¾÷µ¥ÀÌÆ® ½Ã È£Ãâ ***/
-//file_mode : 0 - ¸¶½ºÅÍ ÆÄÀÏ, 1 - Æ®·£Àè¼Ç ÆÄÀÏ, 2 - Edit ¿À·ù ·Î±×, 3 - Transaction ¿À·ù ·Î±×
-bool chk_edit_error(Student_list** src_list, Student_string_data** src_data, char** dpt_list_array, int dpt_list_count); //Editing ¿À·ù °ËÃâ ¹× ·Î±× ±â·Ï ÇÔ¼ö
-bool chk_trans_error(const char* masterKey, const char* transKey, const char* op_code); //Transaction ¿À·ù °ËÃâ ¹× ·Î±× ±â·Ï ÇÔ¼ö
-//file function : ¸ŞÀÎ¿¡¼­ È£Ãâ
-char** allocate_dpt_list_array(int& dpt_list_count); //ÇĞ°ú ¸®½ºÆ® ÆÄÀÏ·ÎºÎÅÍ µ¿Àû ¹è¿­ ÇÒ´ç
-bool create_file(Student_list** src_list, char** dpt_list_array, int dpt_list_count, int file_mode); //ÃÊ±â ¸¶½ºÅÍ ÆÄÀÏ »ı¼º ¶Ç´Â Æ®·£Àè¼Ç ÆÄÀÏ ÀÛ¼º ÇÔ¼ö
-void print_file(int file_mode); //¸¶½ºÅÍ ÆÄÀÏ, Æ®·£Àè¼Ç ÆÄÀÏ, ·Î±× ÆÄÀÏ Ãâ·Â ÇÔ¼ö
-void update_master(bool flag_replace_master); //¸¶½ºÅÍ ÆÄÀÏ °»½Å ÇÔ¼ö
+/*** file function : í•™ìƒ ì •ë³´ ì…ë ¥, ë§ˆìŠ¤í„° íŒŒì¼ ì—…ë°ì´íŠ¸ ì‹œ í˜¸ì¶œ ***/
+//file_mode : 0 - ë§ˆìŠ¤í„° íŒŒì¼, 1 - íŠ¸ëœì­ì…˜ íŒŒì¼, 2 - Edit ì˜¤ë¥˜ ë¡œê·¸, 3 - Transaction ì˜¤ë¥˜ ë¡œê·¸
+bool chk_edit_error(Student_list** src_list, Student_string_data** src_data, char** dpt_list_array, int dpt_list_count); //Editing ì˜¤ë¥˜ ê²€ì¶œ ë° ë¡œê·¸ ê¸°ë¡ í•¨ìˆ˜
+bool chk_trans_error(const char* masterKey, const char* transKey, const char* op_code); //Transaction ì˜¤ë¥˜ ê²€ì¶œ ë° ë¡œê·¸ ê¸°ë¡ í•¨ìˆ˜
+//file function : ë©”ì¸ì—ì„œ í˜¸ì¶œ
+char** allocate_dpt_list_array(int& dpt_list_count); //í•™ê³¼ ë¦¬ìŠ¤íŠ¸ íŒŒì¼ë¡œë¶€í„° ë™ì  ë°°ì—´ í• ë‹¹
+bool create_file(Student_list** src_list, char** dpt_list_array, int dpt_list_count, int file_mode); //ì´ˆê¸° ë§ˆìŠ¤í„° íŒŒì¼ ìƒì„± ë˜ëŠ” íŠ¸ëœì­ì…˜ íŒŒì¼ ì‘ì„± í•¨ìˆ˜
+void print_file(int file_mode); //ë§ˆìŠ¤í„° íŒŒì¼, íŠ¸ëœì­ì…˜ íŒŒì¼, ë¡œê·¸ íŒŒì¼ ì¶œë ¥ í•¨ìˆ˜
+void update_master(bool flag_replace_master); //ë§ˆìŠ¤í„° íŒŒì¼ ê°±ì‹  í•¨ìˆ˜
