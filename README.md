@@ -5,7 +5,7 @@
 
 - In this type of sequential file structure, if you want to Add new record, Delete existing record, or Correct existing data in the master file, you must use batch processing.
 
-- Batch processing creates a transaction file of what you want to do with an existing master file (add a new record, delete an existing record, modify an existing record), and processes the existing master file and transaction file according to the key value (data value of a record that can be sorted) and the action you want to perform (Insert, Delete, Correct) when you renew the new master file.
+- Batch processing creates a transaction file of what you want to do with an existing master file (add a new record, delete an existing record, modify an existing record), and processes the existing master file and transaction file according to the <strong>Key value (data value of a record that can be sorted)</strong> and the action you want to perform (Insert, Delete, Correct) when you renew the new master file.
 
 - This Sequential File Structure Simulator is a program that simulates key sequential files and functions are shown in the following table
 
