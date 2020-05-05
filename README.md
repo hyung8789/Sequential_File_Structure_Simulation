@@ -1,8 +1,6 @@
 # Sequential_File_Structure_Simulator 
 <strong>(순차 파일 구조 시뮬레이터)</strong>
 
-![Main](./images/main.PNG){: width="50%" height="50%"}
-
 - A sequential file is the most basic method of organizing records. It is a method of sequentially storing records in sequence when creating a file.
 
 - In this type of sequential file structure, if you want to Add new record, Delete existing record, or Correct existing data in the master file, you must use batch processing.
