@@ -1,17 +1,17 @@
 #include "header.h"
 
 /* 
-	- ÇĞ»ı °´Ã¼ »ı¼º, ÆÄÀÏ ±â·ÏÀ» À§ÇÑ ÇĞ»ı Á¤º¸ ÀÌÁß ¿¬°á¸®½ºÆ® »ı¼º ¹× »ğÀÔ Á¤·Ä Á¤ÀÇ
-	- ÇĞ»ı ¸®½ºÆ®ÀÇ Å¸ÀÔ(¹è¿­, ÀÌÁß ¿¬°á ¸®½ºÆ®)¿¡ µû¸¥ ¸Ş¸ğ¸® ÇØÁ¦ ÇÔ¼ö Á¤ÀÇ
-	- ÀÔ·Â¹ŞÀº ÇĞ»ı µ¥ÀÌÅÍ·ÎºÎÅÍ Edit ¿À·ù °ËÃâ ¿Ï·á ÈÄ ÇĞ»ı °´Ã¼ »ı¼º, ÇĞ¹ø ¼øÀ¸·Î Á¤·ÄÇÏ¿© ¸®½ºÆ® »ı¼º ÈÄ ÆÄÀÏÀ» ±â·ÏÇÏ´Â file_func¿¡ Àü´Ş
+	- í•™ìƒ ê°ì²´ ìƒì„±, íŒŒì¼ ê¸°ë¡ì„ ìœ„í•œ í•™ìƒ ì •ë³´ ì´ì¤‘ ì—°ê²°ë¦¬ìŠ¤íŠ¸ ìƒì„± ë° ì‚½ì… ì •ë ¬ ì •ì˜
+	- í•™ìƒ ë¦¬ìŠ¤íŠ¸ì˜ íƒ€ì…(ë°°ì—´, ì´ì¤‘ ì—°ê²° ë¦¬ìŠ¤íŠ¸)ì— ë”°ë¥¸ ë©”ëª¨ë¦¬ í•´ì œ í•¨ìˆ˜ ì •ì˜
+	- ì…ë ¥ë°›ì€ í•™ìƒ ë°ì´í„°ë¡œë¶€í„° Edit ì˜¤ë¥˜ ê²€ì¶œ ì™„ë£Œ í›„ í•™ìƒ ê°ì²´ ìƒì„±, í•™ë²ˆ ìˆœìœ¼ë¡œ ì •ë ¬í•˜ì—¬ ë¦¬ìŠ¤íŠ¸ ìƒì„± í›„ íŒŒì¼ì„ ê¸°ë¡í•˜ëŠ” file_funcì— ì „ë‹¬
 */
 
-Student_string_data::Student_string_data() //ÀÔ·Â°ª ±æÀÌ Á¦ÇÑ °Ë»ç¸¦ À§ÇÑ ÇĞ»ı µ¥ÀÌÅÍ ¹®ÀÚ¿­ Å¬·¡½º
+Student_string_data::Student_string_data() //ì…ë ¥ê°’ ê¸¸ì´ ì œí•œ ê²€ì‚¬ë¥¼ ìœ„í•œ í•™ìƒ ë°ì´í„° ë¬¸ìì—´ í´ë˜ìŠ¤
 {
 	this->clear_all();
 }
 
-void Student_string_data::clear_all() //¸ğµç ¹®ÀÚ¿­ÀÇ ³»¿ë ÃÊ±âÈ­
+void Student_string_data::clear_all() //ëª¨ë“  ë¬¸ìì—´ì˜ ë‚´ìš© ì´ˆê¸°í™”
 {
 	this->str_op_code.clear();
 	this->str_student_id.clear();
@@ -23,43 +23,43 @@ void Student_string_data::clear_all() //¸ğµç ¹®ÀÚ¿­ÀÇ ³»¿ë ÃÊ±âÈ­
 
 Student::Student()
 {
-	strcpy(this->Student_ID, NULL_VALUE); //ÇĞ¹ø
-	strcpy(this->name, NULL_VALUE); //ÀÌ¸§
-	strcpy(this->department, NULL_VALUE); //ÇĞ°ú
-	this->grade = EXCEPTION_HANDLING_VALUE; //ÇĞ³â
-	this->score = EXCEPTION_HANDLING_VALUE; //Á¡¼ö
+	strcpy(this->Student_ID, NULL_VALUE); //í•™ë²ˆ
+	strcpy(this->name, NULL_VALUE); //ì´ë¦„
+	strcpy(this->department, NULL_VALUE); //í•™ê³¼
+	this->grade = EXCEPTION_HANDLING_VALUE; //í•™ë…„
+	this->score = EXCEPTION_HANDLING_VALUE; //ì ìˆ˜
 }
 
 Student::Student(const char* ID, const char* name, const char* dpt, int grade, int score)
 {
-	strcpy(this->Student_ID, ID); //ÇĞ¹ø
+	strcpy(this->Student_ID, ID); //í•™ë²ˆ
 	
-	//Æ®·£Àè¼Ç ÆÄÀÏ ÀÛ¼º ½Ã »èÁ¦ ¿¬»ê(D) ½Ã¿¡´Â ÀÌ¸§, ÇĞ°ú, ÇĞ³â, Á¡¼ö¸¦ ÀÔ·Â ¹ŞÁö ¾ÊÀ½
-	//¿¹¿ÜÃ³¸® °ª(EXCEPTION_HANDLING_VALUE, NULL_VALUE)À» ÁÖ¾î ºó °ªÀ¸·Î »ı¼º
+	//íŠ¸ëœì­ì…˜ íŒŒì¼ ì‘ì„± ì‹œ ì‚­ì œ ì—°ì‚°(D) ì‹œì—ëŠ” ì´ë¦„, í•™ê³¼, í•™ë…„, ì ìˆ˜ë¥¼ ì…ë ¥ ë°›ì§€ ì•ŠìŒ
+	//ì˜ˆì™¸ì²˜ë¦¬ ê°’(EXCEPTION_HANDLING_VALUE, NULL_VALUE)ì„ ì£¼ì–´ ë¹ˆ ê°’ìœ¼ë¡œ ìƒì„±
 	if (name != NULL_VALUE && dpt != NULL_VALUE && grade != EXCEPTION_HANDLING_VALUE && score != EXCEPTION_HANDLING_VALUE)
 	{
-		strcpy(this->name, name); //ÀÌ¸§
-		strcpy(this->department, dpt); //ÇĞ°ú
-		this->grade = grade; //ÇĞ³â
-		this->score = score; //Á¡¼ö
+		strcpy(this->name, name); //ì´ë¦„
+		strcpy(this->department, dpt); //í•™ê³¼
+		this->grade = grade; //í•™ë…„
+		this->score = score; //ì ìˆ˜
 	}
-	else //ºó °ª ÇÒ´ç
+	else //ë¹ˆ ê°’ í• ë‹¹
 	{
-		strcpy(this->name, NULL_VALUE); //ÀÌ¸§
-		strcpy(this->department, NULL_VALUE); //ÇĞ°ú
-		this->grade = EXCEPTION_HANDLING_VALUE; //ÇĞ³â
-		this->score = EXCEPTION_HANDLING_VALUE; //Á¡¼ö
+		strcpy(this->name, NULL_VALUE); //ì´ë¦„
+		strcpy(this->department, NULL_VALUE); //í•™ê³¼
+		this->grade = EXCEPTION_HANDLING_VALUE; //í•™ë…„
+		this->score = EXCEPTION_HANDLING_VALUE; //ì ìˆ˜
 	}
 }
 
-void Student::get_Student_ID(char* dst_buffer) //ÇĞ¹ø ¹İÈ¯
+void Student::get_Student_ID(char* dst_buffer) //í•™ë²ˆ ë°˜í™˜
 {
 	strcpy(dst_buffer,this->Student_ID);
 }
 
 Student_list::Student_list()
 {
-	this->op_code = OPERATION_CODE::no_operation; //¿¬»êÄÚµå Enum °ª ÇÒ´ç
+	this->op_code = OPERATION_CODE::no_operation; //ì—°ì‚°ì½”ë“œ Enum ê°’ í• ë‹¹
 
 	this->next = NULL;
 	this->pre = NULL;
@@ -67,13 +67,13 @@ Student_list::Student_list()
 
 Student_list::Student_list(const char* op_code, const char* ID, const char* name, const char* dpt, int grade, int score)
 {
-	strcpy(this->Student_ID, ID); //ÇĞ¹ø
-	strcpy(this->name, name); //ÀÌ¸§
-	strcpy(this->department, dpt); //ÇĞ°ú
-	this->grade = grade; //ÇĞ³â
-	this->score = score; //Á¡¼ö
+	strcpy(this->Student_ID, ID); //í•™ë²ˆ
+	strcpy(this->name, name); //ì´ë¦„
+	strcpy(this->department, dpt); //í•™ê³¼
+	this->grade = grade; //í•™ë…„
+	this->score = score; //ì ìˆ˜
 
-	if (op_code != NULL_VALUE) //¿¬»êÄÚµå Enum °ª ÇÒ´ç
+	if (op_code != NULL_VALUE) //ì—°ì‚°ì½”ë“œ Enum ê°’ í• ë‹¹
 	{
 		if (strcmp(op_code, "I") == 0) //Insert
 			this->op_code = OPERATION_CODE::Insert;
@@ -82,40 +82,40 @@ Student_list::Student_list(const char* op_code, const char* ID, const char* name
 		else //Correct
 			 this->op_code = OPERATION_CODE::Correct;
 	}
-	else //ºó °ª ÇÒ´ç
+	else //ë¹ˆ ê°’ í• ë‹¹
 		this->op_code = OPERATION_CODE::no_operation;
 
 	this->next = NULL;
 	this->pre = NULL;
 }
 
-bool chk_dpt_list(char** dpt_list_array, int dpt_list_count, char* user_input_dpt) //»ç¿ëÀÚ·ÎºÎÅÍÀÇ ÇĞ°ú ÀÔ·Â °ª °Ë»ç ÇÔ¼ö
+bool chk_dpt_list(char** dpt_list_array, int dpt_list_count, char* user_input_dpt) //ì‚¬ìš©ìë¡œë¶€í„°ì˜ í•™ê³¼ ì…ë ¥ ê°’ ê²€ì‚¬ í•¨ìˆ˜
 {
 	for (int i = 0; i < dpt_list_count; i++)
 	{
-		if (strcmp((const char*)dpt_list_array[i], user_input_dpt) == 0) //ÀÏÄ¡ÇÏ¸é
+		if (strcmp((const char*)dpt_list_array[i], user_input_dpt) == 0) //ì¼ì¹˜í•˜ë©´
 		{
-			return true; //ÀÔ·Â °ª¿¡ ÇØ´çÇÏ´Â ÇĞ°ú ÀÌ¸§ Á¸Àç
+			return true; //ì…ë ¥ ê°’ì— í•´ë‹¹í•˜ëŠ” í•™ê³¼ ì´ë¦„ ì¡´ì¬
 		}
 	}
-	return false; //ÀÔ·Â °ª¿¡ ÇØ´çÇÏ´Â ÇĞ°ú ÀÌ¸§ Á¸ÀçÇÏÁö ¾ÊÀ½
+	return false; //ì…ë ¥ ê°’ì— í•´ë‹¹í•˜ëŠ” í•™ê³¼ ì´ë¦„ ì¡´ì¬í•˜ì§€ ì•ŠìŒ
 }
 
-void create_student_list(Student_list** src_list, char** dpt_list_array, int dpt_list_count, bool flag_use_opcode) //»ç¿ëÀÚ·ÎºÎÅÍ ÇĞ»ı µ¥ÀÌÅÍ¸¦ ÀÔ·Â¹Ş°í Edit ¿À·ù °ËÃâ ½ÇÇà ÈÄ µ¥ÀÌÅÍ¸¦ insertion_sort Àü´Ş
+void create_student_list(Student_list** src_list, char** dpt_list_array, int dpt_list_count, bool flag_use_opcode) //ì‚¬ìš©ìë¡œë¶€í„° í•™ìƒ ë°ì´í„°ë¥¼ ì…ë ¥ë°›ê³  Edit ì˜¤ë¥˜ ê²€ì¶œ ì‹¤í–‰ í›„ ë°ì´í„°ë¥¼ insertion_sort ì „ë‹¬
 {
-	//flag_use_opcode : true - ¿¬»êÄÚµå¸¦ Æ÷ÇÔÇÑ ÇĞ»ı ¸®½ºÆ® »ı¼º, false - ÇĞ»ı ¸®½ºÆ® »ı¼º
+	//flag_use_opcode : true - ì—°ì‚°ì½”ë“œë¥¼ í¬í•¨í•œ í•™ìƒ ë¦¬ìŠ¤íŠ¸ ìƒì„±, false - í•™ìƒ ë¦¬ìŠ¤íŠ¸ ìƒì„±
 	
-	char op_code[OP_LENGTH + 1] = { 0, }; //¿¬»ê ÄÚµå(Insert, Delete, Correct)('\0' Á¦¿Ü 1ÀÚ¸®)
-	char student_id[ID_LENGTH + 1] = { 0, }; //ÇĞ¹ø(¼ıÀÚ,¹®ÀÚ Á¶ÇÕ, '\0' Á¦¿Ü 8ÀÚ¸®)
-	char name[NAME_LENGTH + 1] = { 0, }; //ÀÌ¸§ ('\0' Á¦¿Ü 10ÀÚ¸®)
-	char dpt[DPT_LENGTH + 1] = { 0, }; //ÇĞ°ú ('\0' Á¦¿Ü 2ÀÚ¸®)
-	int grade = EXCEPTION_HANDLING_VALUE;  //ÇĞ³â
-	int score = EXCEPTION_HANDLING_VALUE; //Á¡¼ö
+	char op_code[OP_LENGTH + 1] = { 0, }; //ì—°ì‚° ì½”ë“œ(Insert, Delete, Correct)('\0' ì œì™¸ 1ìë¦¬)
+	char student_id[ID_LENGTH + 1] = { 0, }; //í•™ë²ˆ(ìˆ«ì,ë¬¸ì ì¡°í•©, '\0' ì œì™¸ 8ìë¦¬)
+	char name[NAME_LENGTH + 1] = { 0, }; //ì´ë¦„ ('\0' ì œì™¸ 10ìë¦¬)
+	char dpt[DPT_LENGTH + 1] = { 0, }; //í•™ê³¼ ('\0' ì œì™¸ 2ìë¦¬)
+	int grade = EXCEPTION_HANDLING_VALUE;  //í•™ë…„
+	int score = EXCEPTION_HANDLING_VALUE; //ì ìˆ˜
 
-	std::string user_input; //»ç¿ëÀÚ·ÎºÎÅÍ ¸í·É¾î¸¦ ÇÑ ÁÙ·Î ÀÔ·Â¹Ş´Â º¯¼ö
-	Student_string_data* string_data = new Student_string_data(); //»ç¿ëÀÚ·ÎºÎÅÍ ¹ŞÀº °ªµéÀ» stringÀ¸·Î ºĞ¸®ÇÏ¿© edit ¿À·ù °Ë»ç ÈÄ ÇÒ´ç
+	std::string user_input; //ì‚¬ìš©ìë¡œë¶€í„° ëª…ë ¹ì–´ë¥¼ í•œ ì¤„ë¡œ ì…ë ¥ë°›ëŠ” ë³€ìˆ˜
+	Student_string_data* string_data = new Student_string_data(); //ì‚¬ìš©ìë¡œë¶€í„° ë°›ì€ ê°’ë“¤ì„ stringìœ¼ë¡œ ë¶„ë¦¬í•˜ì—¬ edit ì˜¤ë¥˜ ê²€ì‚¬ í›„ í• ë‹¹
 
-	//Ãâ·Â È­¸é ÁöÁ¤
+	//ì¶œë ¥ í™”ë©´ ì§€ì •
 	if (flag_use_opcode == true)
 	{
 		disp_student_trans_input_bar(dpt_list_array, dpt_list_count);
@@ -127,78 +127,78 @@ void create_student_list(Student_list** src_list, char** dpt_list_array, int dpt
 
 	while (1)
 	{
-		string_data->clear_all(); //´ÙÀ½ ¹ø ÀÔ·Â ½Ã¸¦ À§ÇØ¼­ ÃÊ±âÈ­
+		string_data->clear_all(); //ë‹¤ìŒ ë²ˆ ì…ë ¥ ì‹œë¥¼ ìœ„í•´ì„œ ì´ˆê¸°í™”
 
-		std::getline(std::cin, user_input); //ÇÑ ÁÙ·Î ÀÔ·Â¹Ş±â
-		std::stringstream ss(user_input); //ºĞ¸®
+		std::getline(std::cin, user_input); //í•œ ì¤„ë¡œ ì…ë ¥ë°›ê¸°
+		std::stringstream ss(user_input); //ë¶„ë¦¬
 
-		switch (flag_use_opcode) //ÀÔ·Â °ª ¹× ¹İÈ¯ °ª ÁöÁ¤
+		switch (flag_use_opcode) //ì…ë ¥ ê°’ ë° ë°˜í™˜ ê°’ ì§€ì •
 		{
-		case true: //¿¬»êÄÚµå¸¦ Æ÷ÇÔ ÇĞ»ı¸®½ºÆ® »ı¼º(Æ®·£Àè¼Ç ÆÄÀÏ ÀÛ¼º)
-			ss >> string_data->str_op_code; //¿¬»êÄÚµå ºĞ¸®
+		case true: //ì—°ì‚°ì½”ë“œë¥¼ í¬í•¨ í•™ìƒë¦¬ìŠ¤íŠ¸ ìƒì„±(íŠ¸ëœì­ì…˜ íŒŒì¼ ì‘ì„±)
+			ss >> string_data->str_op_code; //ì—°ì‚°ì½”ë“œ ë¶„ë¦¬
 			
 			if (string_data->str_op_code.compare("-1") == 0)
 			{	
 				delete(string_data);
 				return;
 			}
-			else if (string_data->str_op_code.compare("D") == 0) //»èÁ¦ ¿¬»ê ½Ã ÇĞ¹ø¸¸ ÇÊ¿ä
+			else if (string_data->str_op_code.compare("D") == 0) //ì‚­ì œ ì—°ì‚° ì‹œ í•™ë²ˆë§Œ í•„ìš”
 			{
 				ss >> string_data->str_student_id;
-				if (chk_edit_error(src_list, &string_data, dpt_list_array, dpt_list_count) == true) //edit ¿À·ù °Ë»ç ¹× ·Î±× ±â·Ï
+				if (chk_edit_error(src_list, &string_data, dpt_list_array, dpt_list_count) == true) //edit ì˜¤ë¥˜ ê²€ì‚¬ ë° ë¡œê·¸ ê¸°ë¡
 				{
-					strcpy(op_code, string_data->str_op_code.c_str()); //ÀÔ·ÂÇÑ ¹®ÀÚ¿­¿¡ ÀÌ»óÀÌ ¾øÀ¸¸é º¹»ç
-					strcpy(student_id, string_data->str_student_id.c_str()); //ÀÔ·ÂÇÑ ¹®ÀÚ¿­¿¡ ÀÌ»óÀÌ ¾øÀ¸¸é º¹»ç
-					//edit ¿À·ù°¡ °ËÃâµÇÁö ¾Ê¾ÒÀ» °æ¿ì »õ·Î¿î ÇĞ»ı °´Ã¼¸¦ »ı¼ºÇÏ¿© ¸®½ºÆ®¿¡ Á¤·ÄµÈ À§Ä¡¿¡ »ğÀÔ
+					strcpy(op_code, string_data->str_op_code.c_str()); //ì…ë ¥í•œ ë¬¸ìì—´ì— ì´ìƒì´ ì—†ìœ¼ë©´ ë³µì‚¬
+					strcpy(student_id, string_data->str_student_id.c_str()); //ì…ë ¥í•œ ë¬¸ìì—´ì— ì´ìƒì´ ì—†ìœ¼ë©´ ë³µì‚¬
+					//edit ì˜¤ë¥˜ê°€ ê²€ì¶œë˜ì§€ ì•Šì•˜ì„ ê²½ìš° ìƒˆë¡œìš´ í•™ìƒ ê°ì²´ë¥¼ ìƒì„±í•˜ì—¬ ë¦¬ìŠ¤íŠ¸ì— ì •ë ¬ëœ ìœ„ì¹˜ì— ì‚½ì…
 					insertion_sort(src_list, op_code, student_id, NULL_VALUE, NULL_VALUE, EXCEPTION_HANDLING_VALUE, EXCEPTION_HANDLING_VALUE);
 				}
 				break;
 			}
-			else //»ğÀÔ, ¼öÁ¤ ¿¬»ê ¶Ç´Â ´Ù¸¥ Àß¸øµÈ ÀÔ·Â(EDit ¿À·ù °Ë»çÀ» ÅëÇØ °ËÃâ)
+			else //ì‚½ì…, ìˆ˜ì • ì—°ì‚° ë˜ëŠ” ë‹¤ë¥¸ ì˜ëª»ëœ ì…ë ¥(EDit ì˜¤ë¥˜ ê²€ì‚¬ì„ í†µí•´ ê²€ì¶œ)
 			{
-				ss >> string_data->str_student_id; //ÇĞ¹ø ºĞ¸®
-				ss >> string_data->str_name; //ÀÌ¸§ ºĞ¸®
-				ss >> string_data->str_dpt; //ÇĞ°ú ºĞ¸®
-				ss >> string_data->str_grade; //ÇĞ³â ºĞ¸®
-				ss >> string_data->str_score; //Á¡¼ö ºĞ¸®
+				ss >> string_data->str_student_id; //í•™ë²ˆ ë¶„ë¦¬
+				ss >> string_data->str_name; //ì´ë¦„ ë¶„ë¦¬
+				ss >> string_data->str_dpt; //í•™ê³¼ ë¶„ë¦¬
+				ss >> string_data->str_grade; //í•™ë…„ ë¶„ë¦¬
+				ss >> string_data->str_score; //ì ìˆ˜ ë¶„ë¦¬
 
-				if (chk_edit_error(src_list, &string_data, dpt_list_array, dpt_list_count) == true) //edit ¿À·ù °Ë»ç ¹× ·Î±× ±â·Ï
+				if (chk_edit_error(src_list, &string_data, dpt_list_array, dpt_list_count) == true) //edit ì˜¤ë¥˜ ê²€ì‚¬ ë° ë¡œê·¸ ê¸°ë¡
 				{
-					strcpy(op_code, string_data->str_op_code.c_str()); //ÀÔ·ÂÇÑ ¹®ÀÚ¿­¿¡ ÀÌ»óÀÌ ¾øÀ¸¸é º¹»ç
-					strcpy(student_id, string_data->str_student_id.c_str()); //ÀÔ·ÂÇÑ ¹®ÀÚ¿­¿¡ ÀÌ»óÀÌ ¾øÀ¸¸é º¹»ç
-					strcpy(name, string_data->str_name.c_str()); //ÀÔ·ÂÇÑ ¹®ÀÚ¿­¿¡ ÀÌ»óÀÌ ¾øÀ¸¸é º¹»ç
-					strcpy(dpt, string_data->str_dpt.c_str()); //ÀÔ·ÂÇÑ ¹®ÀÚ¿­¿¡ ÀÌ»óÀÌ ¾øÀ¸¸é º¹»ç
-					grade = atoi(string_data->str_grade.c_str()); //ÀÔ·ÂÇÑ ¹®ÀÚ¿­¿¡ ÀÌ»óÀÌ ¾øÀ¸¸é º¹»ç
-					score = atoi(string_data->str_score.c_str()); //ÀÔ·ÂÇÑ ¹®ÀÚ¿­¿¡ ÀÌ»óÀÌ ¾øÀ¸¸é º¹»ç
+					strcpy(op_code, string_data->str_op_code.c_str()); //ì…ë ¥í•œ ë¬¸ìì—´ì— ì´ìƒì´ ì—†ìœ¼ë©´ ë³µì‚¬
+					strcpy(student_id, string_data->str_student_id.c_str()); //ì…ë ¥í•œ ë¬¸ìì—´ì— ì´ìƒì´ ì—†ìœ¼ë©´ ë³µì‚¬
+					strcpy(name, string_data->str_name.c_str()); //ì…ë ¥í•œ ë¬¸ìì—´ì— ì´ìƒì´ ì—†ìœ¼ë©´ ë³µì‚¬
+					strcpy(dpt, string_data->str_dpt.c_str()); //ì…ë ¥í•œ ë¬¸ìì—´ì— ì´ìƒì´ ì—†ìœ¼ë©´ ë³µì‚¬
+					grade = atoi(string_data->str_grade.c_str()); //ì…ë ¥í•œ ë¬¸ìì—´ì— ì´ìƒì´ ì—†ìœ¼ë©´ ë³µì‚¬
+					score = atoi(string_data->str_score.c_str()); //ì…ë ¥í•œ ë¬¸ìì—´ì— ì´ìƒì´ ì—†ìœ¼ë©´ ë³µì‚¬
 
-					//edit ¿À·ù°¡ °ËÃâµÇÁö ¾Ê¾ÒÀ» °æ¿ì »õ·Î¿î ÇĞ»ı °´Ã¼¸¦ »ı¼ºÇÏ¿© ¸®½ºÆ®¿¡ Á¤·ÄµÈ À§Ä¡¿¡ »ğÀÔ
+					//edit ì˜¤ë¥˜ê°€ ê²€ì¶œë˜ì§€ ì•Šì•˜ì„ ê²½ìš° ìƒˆë¡œìš´ í•™ìƒ ê°ì²´ë¥¼ ìƒì„±í•˜ì—¬ ë¦¬ìŠ¤íŠ¸ì— ì •ë ¬ëœ ìœ„ì¹˜ì— ì‚½ì…
 					insertion_sort(src_list, op_code, student_id, name, dpt, grade, score);
 				}
 				break;
 			}
 		
-		case false: //ÇĞ»ı ¸®½ºÆ® »ı¼º
-			ss >> string_data->str_student_id; //ÇĞ¹ø ºĞ¸®
+		case false: //í•™ìƒ ë¦¬ìŠ¤íŠ¸ ìƒì„±
+			ss >> string_data->str_student_id; //í•™ë²ˆ ë¶„ë¦¬
 
 			if (string_data->str_student_id.compare("-1") == 0)
 			{
 				delete(string_data);
 				return;
 			}
-			ss >> string_data->str_name; //ÀÌ¸§ ºĞ¸®
-			ss >> string_data->str_dpt; //ÇĞ°ú ºĞ¸®
-			ss >> string_data->str_grade; //ÇĞ³â ºĞ¸®
-			ss >> string_data->str_score; //Á¡¼ö ºĞ¸®
+			ss >> string_data->str_name; //ì´ë¦„ ë¶„ë¦¬
+			ss >> string_data->str_dpt; //í•™ê³¼ ë¶„ë¦¬
+			ss >> string_data->str_grade; //í•™ë…„ ë¶„ë¦¬
+			ss >> string_data->str_score; //ì ìˆ˜ ë¶„ë¦¬
 
-			if (chk_edit_error(src_list, &string_data, dpt_list_array, dpt_list_count) == true) //edit ¿À·ù °Ë»ç ¹× ·Î±× ±â·Ï
+			if (chk_edit_error(src_list, &string_data, dpt_list_array, dpt_list_count) == true) //edit ì˜¤ë¥˜ ê²€ì‚¬ ë° ë¡œê·¸ ê¸°ë¡
 			{
-				strcpy(student_id, string_data->str_student_id.c_str()); //ÀÔ·ÂÇÑ ¹®ÀÚ¿­¿¡ ÀÌ»óÀÌ ¾øÀ¸¸é º¹»ç
-				strcpy(name, string_data->str_name.c_str()); //ÀÔ·ÂÇÑ ¹®ÀÚ¿­¿¡ ÀÌ»óÀÌ ¾øÀ¸¸é º¹»ç
-				strcpy(dpt, string_data->str_dpt.c_str()); //ÀÔ·ÂÇÑ ¹®ÀÚ¿­¿¡ ÀÌ»óÀÌ ¾øÀ¸¸é º¹»ç
-				grade = atoi(string_data->str_grade.c_str()); //ÀÔ·ÂÇÑ ¹®ÀÚ¿­¿¡ ÀÌ»óÀÌ ¾øÀ¸¸é º¹»ç
-				score = atoi(string_data->str_score.c_str()); //ÀÔ·ÂÇÑ ¹®ÀÚ¿­¿¡ ÀÌ»óÀÌ ¾øÀ¸¸é º¹»ç
+				strcpy(student_id, string_data->str_student_id.c_str()); //ì…ë ¥í•œ ë¬¸ìì—´ì— ì´ìƒì´ ì—†ìœ¼ë©´ ë³µì‚¬
+				strcpy(name, string_data->str_name.c_str()); //ì…ë ¥í•œ ë¬¸ìì—´ì— ì´ìƒì´ ì—†ìœ¼ë©´ ë³µì‚¬
+				strcpy(dpt, string_data->str_dpt.c_str()); //ì…ë ¥í•œ ë¬¸ìì—´ì— ì´ìƒì´ ì—†ìœ¼ë©´ ë³µì‚¬
+				grade = atoi(string_data->str_grade.c_str()); //ì…ë ¥í•œ ë¬¸ìì—´ì— ì´ìƒì´ ì—†ìœ¼ë©´ ë³µì‚¬
+				score = atoi(string_data->str_score.c_str()); //ì…ë ¥í•œ ë¬¸ìì—´ì— ì´ìƒì´ ì—†ìœ¼ë©´ ë³µì‚¬
 
-				//edit ¿À·ù°¡ °ËÃâµÇÁö ¾Ê¾ÒÀ» °æ¿ì »õ·Î¿î ÇĞ»ı °´Ã¼¸¦ »ı¼ºÇÏ¿© ¸®½ºÆ®¿¡ Á¤·ÄµÈ À§Ä¡¿¡ »ğÀÔ
+				//edit ì˜¤ë¥˜ê°€ ê²€ì¶œë˜ì§€ ì•Šì•˜ì„ ê²½ìš° ìƒˆë¡œìš´ í•™ìƒ ê°ì²´ë¥¼ ìƒì„±í•˜ì—¬ ë¦¬ìŠ¤íŠ¸ì— ì •ë ¬ëœ ìœ„ì¹˜ì— ì‚½ì…
 				insertion_sort(src_list, NULL_VALUE, student_id, name, dpt, grade, score);
 			}
 			break;
@@ -209,49 +209,48 @@ void create_student_list(Student_list** src_list, char** dpt_list_array, int dpt
 	delete(string_data);
 }
 
-void insertion_sort(Student_list** src_list, const char* op_code, const char* ID, const char* name, const char* dpt, int grade, int score)  //Edit ¿À·ù °ËÃâÀ» ¸¶Ä£ µ¥ÀÌÅÍµé·ÎºÎÅÍ »õ·Î¿î ÇĞ»ı °´Ã¼¸¦ »ı¼º ¹× »ğÀÔÁ¤·ÄÇÏ¿© ¸®½ºÆ® »ı¼º
+void insertion_sort(Student_list** src_list, const char* op_code, const char* ID, const char* name, const char* dpt, int grade, int score)  //Edit ì˜¤ë¥˜ ê²€ì¶œì„ ë§ˆì¹œ ë°ì´í„°ë“¤ë¡œë¶€í„° ìƒˆë¡œìš´ í•™ìƒ ê°ì²´ë¥¼ ìƒì„± ë° ì‚½ì…ì •ë ¬í•˜ì—¬ ë¦¬ìŠ¤íŠ¸ ìƒì„±
 {
-	Student_list* new_student = NULL; //¸®½ºÆ®¿¡ ¿¬°áÇÒ »õ·Î¿î ÇĞ»ı Á¤º¸ »ı¼º
-	Student_list* tmp_student_head = NULL; //ÇĞ¹ø ¼øÀ¸·Î Á¤·ÄÀ» À§ÇØ ¸®½ºÆ®ÀÇ Çìµå ³ëµå¸¦ ÀúÀå
+	Student_list* new_student = NULL; //ë¦¬ìŠ¤íŠ¸ì— ì—°ê²°í•  ìƒˆë¡œìš´ í•™ìƒ ì •ë³´ ìƒì„±
+	Student_list* tmp_student_head = NULL; //í•™ë²ˆ ìˆœìœ¼ë¡œ ì •ë ¬ì„ ìœ„í•´ ë¦¬ìŠ¤íŠ¸ì˜ í—¤ë“œ ë…¸ë“œë¥¼ ì €ì¥
 
-	int student_counter = 0; //ÀÔ·Â¹Ş¾Æ »ı¼ºµÈ ÇĞ»ı ¼ö
-	char current_buffer_id[ID_LENGTH + 1] = { 0, }; //±âÁ¸ ÇĞ»ı ³ëµåÀÇ ÇĞ¹ø °ª ÀÓ½ÃÀúÀå
-	char new_buffer_id[ID_LENGTH + 1] = { 0, }; //»õ·Î¿î ÇĞ»ı ³ëµåÀÇ ÇĞ¹ø °ª ÀÓ½ÃÀúÀå
+	char current_buffer_id[ID_LENGTH + 1] = { 0, }; //ê¸°ì¡´ í•™ìƒ ë…¸ë“œì˜ í•™ë²ˆ ê°’ ì„ì‹œì €ì¥
+	char new_buffer_id[ID_LENGTH + 1] = { 0, }; //ìƒˆë¡œìš´ í•™ìƒ ë…¸ë“œì˜ í•™ë²ˆ ê°’ ì„ì‹œì €ì¥
 
-	//¿À·ù°¡ ¾øÀ» ½Ã ±â·ÏÀ» À§ÇÑ ÇĞ»ı Á¤º¸ ¸®½ºÆ®¿¡ ÇĞ¹ø ¼øÀ¸·Î Ãß°¡
-	if (*src_list == NULL) //ÃÊ±â ³ëµå »ı¼º
+	//ì˜¤ë¥˜ê°€ ì—†ì„ ì‹œ ê¸°ë¡ì„ ìœ„í•œ í•™ìƒ ì •ë³´ ë¦¬ìŠ¤íŠ¸ì— í•™ë²ˆ ìˆœìœ¼ë¡œ ì¶”ê°€
+	if (*src_list == NULL) //ì´ˆê¸° ë…¸ë“œ ìƒì„±
 	{
 		(*src_list) = new Student_list(op_code, ID, name, dpt, grade, score);
 	}
 	else
 	{
-		new_student = new Student_list(op_code, ID, name, dpt, grade, score); //¸®½ºÆ®¿¡ »ğÀÔÇÒ »õ·Î¿î ÇĞ»ı Á¤º¸
-		tmp_student_head = (*src_list); //±âÁ¸ ¸®½ºÆ®ÀÇ Ã¹ ¹øÂ° ÇĞ»ı Á¤º¸ ÀÓ½ÃÀúÀå
+		new_student = new Student_list(op_code, ID, name, dpt, grade, score); //ë¦¬ìŠ¤íŠ¸ì— ì‚½ì…í•  ìƒˆë¡œìš´ í•™ìƒ ì •ë³´
+		tmp_student_head = (*src_list); //ê¸°ì¡´ ë¦¬ìŠ¤íŠ¸ì˜ ì²« ë²ˆì§¸ í•™ìƒ ì •ë³´ ì„ì‹œì €ì¥
 
-		while (1) //¸®½ºÆ®ÀÇ ³¡±îÁö ¼öÇà, ÇĞ¹ø ¼øÀ¸·Î »ğÀÔ Á¤·ÄÇÏ¿© ¸®½ºÆ®¸¦ ¸¸µç´Ù
+		while (1) //ë¦¬ìŠ¤íŠ¸ì˜ ëê¹Œì§€ ìˆ˜í–‰, í•™ë²ˆ ìˆœìœ¼ë¡œ ì‚½ì… ì •ë ¬í•˜ì—¬ ë¦¬ìŠ¤íŠ¸ë¥¼ ë§Œë“ ë‹¤
 		{
-			//´ÙÀ½ ¹ø ÀÔ·ÂÀ» À§ÇÑ ¹öÆÛ ÃÊ±âÈ­
+			//ë‹¤ìŒ ë²ˆ ì…ë ¥ì„ ìœ„í•œ ë²„í¼ ì´ˆê¸°í™”
 			memset(current_buffer_id, NULL, sizeof(current_buffer_id));
 			memset(new_buffer_id, NULL, sizeof(new_buffer_id));
 
-			(*src_list)->get_Student_ID(current_buffer_id); //±âÁ¸ ÇĞ»ı ³ëµåÀÇ ÇĞ¹ø °ª ¹öÆÛ ÇÒ´ç
-			new_student->get_Student_ID(new_buffer_id); //»õ·Î¿î ÇĞ»ı ³ëµåÀÇ ÇĞ¹ø °ª ¹öÆÛ ÇÒ´ç
+			(*src_list)->get_Student_ID(current_buffer_id); //ê¸°ì¡´ í•™ìƒ ë…¸ë“œì˜ í•™ë²ˆ ê°’ ë²„í¼ í• ë‹¹
+			new_student->get_Student_ID(new_buffer_id); //ìƒˆë¡œìš´ í•™ìƒ ë…¸ë“œì˜ í•™ë²ˆ ê°’ ë²„í¼ í• ë‹¹
 
 			if (strcmp(new_buffer_id, current_buffer_id) < 0) //strcmp(A,B) < 0 => A < B
 			{
-				//»õ·Î ÀÔ·ÂÇÏ°íÀÚ ÇÏ´Â ³ëµåÀÇ Å° °ªÀÌ ±âÁ¸ ³ëµåº¸´Ù ÀÛÀº ¼ö ÀÏ °æ¿ì ¾Õ¿¡ ±â·Ï
+				//ìƒˆë¡œ ì…ë ¥í•˜ê³ ì í•˜ëŠ” ë…¸ë“œì˜ í‚¤ ê°’ì´ ê¸°ì¡´ ë…¸ë“œë³´ë‹¤ ì‘ì€ ìˆ˜ ì¼ ê²½ìš° ì•ì— ê¸°ë¡
 				new_student->next = (*src_list);
-				if ((*src_list)->pre != NULL) //ÇöÀç ³ëµåÀÇ ÀÌÀü ³ëµå°¡ Á¸ÀçÇÏ¸é
+				if ((*src_list)->pre != NULL) //í˜„ì¬ ë…¸ë“œì˜ ì´ì „ ë…¸ë“œê°€ ì¡´ì¬í•˜ë©´
 				{
 					new_student->pre = (*src_list)->pre;
 					(*src_list)->pre->next = new_student;
 				}
 				(*src_list)->pre = new_student;
 
-				if (new_student->pre == NULL) //»õ·Î¿î ÇĞ»ı Á¤º¸°¡ »ğÀÔµÈ À§Ä¡°¡ ¸Ç Ã³À½ÀÎ °æ¿ì
-					(*src_list) = new_student; //ÇĞ»ı Á¤º¸ ¸®½ºÆ®°¡ »õ·Î¿î ÇĞ»ı Á¤º¸ ³ëµå¸¦ °¡¸®Å°µµ·Ï º¯°æ
-				else //»õ·Î¿î ÇĞ»ı Á¤º¸°¡ Áß¾Ó¿¡ »ğÀÔµÈ °æ¿ì
-					(*src_list) = tmp_student_head; //±âÁ¸ Çìµå·Î ´Ù½Ã º¯°æÇÏ¿© ¸®½ºÆ®°¡ ¸Ç Ã³À½À» °¡¸®Å°µµ·Ï ÇÔ
+				if (new_student->pre == NULL) //ìƒˆë¡œìš´ í•™ìƒ ì •ë³´ê°€ ì‚½ì…ëœ ìœ„ì¹˜ê°€ ë§¨ ì²˜ìŒì¸ ê²½ìš°
+					(*src_list) = new_student; //í•™ìƒ ì •ë³´ ë¦¬ìŠ¤íŠ¸ê°€ ìƒˆë¡œìš´ í•™ìƒ ì •ë³´ ë…¸ë“œë¥¼ ê°€ë¦¬í‚¤ë„ë¡ ë³€ê²½
+				else //ìƒˆë¡œìš´ í•™ìƒ ì •ë³´ê°€ ì¤‘ì•™ì— ì‚½ì…ëœ ê²½ìš°
+					(*src_list) = tmp_student_head; //ê¸°ì¡´ í—¤ë“œë¡œ ë‹¤ì‹œ ë³€ê²½í•˜ì—¬ ë¦¬ìŠ¤íŠ¸ê°€ ë§¨ ì²˜ìŒì„ ê°€ë¦¬í‚¤ë„ë¡ í•¨
 				break;
 			}
 
@@ -259,24 +258,24 @@ void insertion_sort(Student_list** src_list, const char* op_code, const char* ID
 				(*src_list) = (*src_list)->next;
 			else
 				break;
-		} //¸®½ºÆ® ³¡±îÁö ¼öÇà ¿Ï·á
+		} //ë¦¬ìŠ¤íŠ¸ ëê¹Œì§€ ìˆ˜í–‰ ì™„ë£Œ
 
-		//³ëµå ³¡±îÁö ºñ±³ÇÏ¿© »ğÀÔÀÌ µÇÁö ¾ÊÀº °æ¿ì ¸Ç µÚ¿¡ »ğÀÔ
+		//ë…¸ë“œ ëê¹Œì§€ ë¹„êµí•˜ì—¬ ì‚½ì…ì´ ë˜ì§€ ì•Šì€ ê²½ìš° ë§¨ ë’¤ì— ì‚½ì…
 		if (new_student->next == NULL && new_student->pre == NULL)
 		{
 			new_student->pre = (*src_list);
 			(*src_list)->next = new_student;
-			(*src_list) = tmp_student_head; //±âÁ¸ Çìµå·Î ´Ù½Ã º¯°æÇÏ¿© ¸®½ºÆ®°¡ ¸Ç Ã³À½À» °¡¸®Å°µµ·Ï ÇÔ
+			(*src_list) = tmp_student_head; //ê¸°ì¡´ í—¤ë“œë¡œ ë‹¤ì‹œ ë³€ê²½í•˜ì—¬ ë¦¬ìŠ¤íŠ¸ê°€ ë§¨ ì²˜ìŒì„ ê°€ë¦¬í‚¤ë„ë¡ í•¨
 		}
 	}
 }
 
-void deallocate_memory(Student_list** student_list, char** dpt_list_array, int dpt_list_count, int type) //¸Ş¸ğ¸® ÇØÁ¦
+void deallocate_memory(Student_list** student_list, char** dpt_list_array, int dpt_list_count, int type) //ë©”ëª¨ë¦¬ í•´ì œ
 {
 	//type : 0 - Dynamic Array, 1 - Double Linked List
-	//type¿¡ µû¸¥ ¸Ş¸ğ¸® ÇØÁ¦
-	Student_list* student_list_indexer = NULL; //¿øº» ¸®½ºÆ® ÀÎµ¦¼­
-	Student_list* del_this = NULL; //student_list_indexer·ÎºÎÅÍ ÇÒ´çÇÏ¿© ¼øÂ÷ÀûÀ¸·Î ÇØÁ¦
+	//typeì— ë”°ë¥¸ ë©”ëª¨ë¦¬ í•´ì œ
+	Student_list* student_list_indexer = NULL; //ì›ë³¸ ë¦¬ìŠ¤íŠ¸ ì¸ë±ì„œ
+	Student_list* del_this = NULL; //student_list_indexerë¡œë¶€í„° í• ë‹¹í•˜ì—¬ ìˆœì°¨ì ìœ¼ë¡œ í•´ì œ
 
 	switch (type)
 	{
@@ -297,10 +296,10 @@ void deallocate_memory(Student_list** student_list, char** dpt_list_array, int d
 		while (student_list_indexer != NULL)
 		{
 			del_this = student_list_indexer;
-			student_list_indexer = student_list_indexer->next; //ÀÎµ¦¼­¸¦ ÀÌµ¿ ÈÄ »èÁ¦
+			student_list_indexer = student_list_indexer->next; //ì¸ë±ì„œë¥¼ ì´ë™ í›„ ì‚­ì œ
 			delete(del_this);
 		}
-		(*student_list) = NULL; //¸µÅ© ÃÊ±âÈ­
+		(*student_list) = NULL; //ë§í¬ ì´ˆê¸°í™”
 
 		break;
 
