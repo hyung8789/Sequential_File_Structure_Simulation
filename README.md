@@ -7,7 +7,7 @@
 
 - Batch processing creates a transaction file of what you want to do with an existing master file (add a new record, delete an existing record, modify an existing record), and processes the existing master file and transaction file according to the <strong>Key value (Unique data value of a record that can be sorted)</strong> and the action you want to perform (Insert, Delete, Correct) when you renew the new master file.
 
-- This Sequential File Structure Simulator is a program that simulates <u>key sequential files</u> and functions are shown in the following table
+- This Sequential File Structure Simulator is a program that simulates <strong>key sequential files</strong> and functions are shown in the following table
 
 <br></br>
 <strong>< Sequential File Structure Simulator Functions List ></strong>
