@@ -1,21 +1,21 @@
 #include "header.h"
 
-// È­¸é ÀÔ/Ãâ·Â ÇÔ¼ö Á¤ÀÇ
+// í™”ë©´ ì…/ì¶œë ¥ í•¨ìˆ˜ ì •ì˜
 
-void disp_main_menu() //¸ŞÀÎ ¸Ş´º Ãâ·Â
+void disp_main_menu() //ë©”ì¸ ë©”ë‰´ ì¶œë ¥
 {
 	system("cls");
 	std::cout << "==============================================================" << std::endl;
 	std::cout << "	    Sequential File Structure Simulation" << std::endl;
 	std::cout << "==============================================================" << std::endl;
-	std::cout << " 1 : ÃÊ±â ¸¶½ºÅÍ ÆÄÀÏ »ı¼º" << std::endl;
-	std::cout << " 2 : ¸¶½ºÅÍ ÆÄÀÏ Ãâ·Â" << std::endl;
+	std::cout << " 1 : ì´ˆê¸° ë§ˆìŠ¤í„° íŒŒì¼ ìƒì„±" << std::endl;
+	std::cout << " 2 : ë§ˆìŠ¤í„° íŒŒì¼ ì¶œë ¥" << std::endl;
 	std::cout << "--------------------------------------------------------------" << std::endl;
-	std::cout << " 3 : Æ®·£Àè¼Ç ÆÄÀÏ ÀÛ¼º" << std::endl;
-	std::cout << " 4 : Æ®·£Àè¼Ç ÆÄÀÏ Ãâ·Â" << std::endl;
+	std::cout << " 3 : íŠ¸ëœì­ì…˜ íŒŒì¼ ì‘ì„±" << std::endl;
+	std::cout << " 4 : íŠ¸ëœì­ì…˜ íŒŒì¼ ì¶œë ¥" << std::endl;
 	std::cout << "--------------------------------------------------------------" << std::endl;
-	//std::cout << "ÇĞ¹ø ¼ø Á¤·Ä & µ¥ÀÌÅÍ ¿À·ù °ËÃâ(Manually)" << std::endl;
-	std::cout << " 5 : ¸¶½ºÅÍ ÆÄÀÏ °»½Å (Trans -> Master)" << std::endl;
+	//std::cout << "í•™ë²ˆ ìˆœ ì •ë ¬ & ë°ì´í„° ì˜¤ë¥˜ ê²€ì¶œ(Manually)" << std::endl;
+	std::cout << " 5 : ë§ˆìŠ¤í„° íŒŒì¼ ê°±ì‹  (Trans -> Master)" << std::endl;
 	std::cout << "--------------------------------------------------------------" << std::endl;
 	std::cout << " 6 : View Error Log" << std::endl;
 	std::cout << " 7 : Exit" << std::endl;
@@ -23,19 +23,19 @@ void disp_main_menu() //¸ŞÀÎ ¸Ş´º Ãâ·Â
 	std::cout << ">>";
 }
 
-void disp_student_description_bar(int file_mode) //ÇĞ»ı Á¤º¸ ¼³¸í Ãâ·Â
+void disp_student_description_bar(int file_mode) //í•™ìƒ ì •ë³´ ì„¤ëª… ì¶œë ¥
 {
 	system("cls");
 	switch (file_mode)
 	{
-	case 0: //¸¶½ºÅÍ ÆÄÀÏ
+	case 0: //ë§ˆìŠ¤í„° íŒŒì¼
 		std::cout << "==============================================================" << std::endl;
-		std::cout << "ÇĞ¹ø ||  ÀÌ¸§  ||  ÇĞ°ú  ||  ÇĞ³â  ||  Á¡¼ö" << std::endl;
+		std::cout << "í•™ë²ˆ ||  ì´ë¦„  ||  í•™ê³¼  ||  í•™ë…„  ||  ì ìˆ˜" << std::endl;
 		std::cout << "==============================================================" << std::endl;
 		break;
-	case 1: //Æ®·£Àè¼Ç ÆÄÀÏ
+	case 1: //íŠ¸ëœì­ì…˜ íŒŒì¼
 		std::cout << "==============================================================" << std::endl;
-		std::cout << "ÇĞ¹ø ||  ¿¬»êÄÚµå ||  ÀÌ¸§  ||  ÇĞ°ú  ||  ÇĞ³â  ||  Á¡¼ö" << std::endl;
+		std::cout << "í•™ë²ˆ ||  ì—°ì‚°ì½”ë“œ ||  ì´ë¦„  ||  í•™ê³¼  ||  í•™ë…„  ||  ì ìˆ˜" << std::endl;
 		std::cout << "==============================================================" << std::endl;
 		break;
 	default:
@@ -43,23 +43,23 @@ void disp_student_description_bar(int file_mode) //ÇĞ»ı Á¤º¸ ¼³¸í Ãâ·Â
 	}
 }
 
-void disp_student_trans_input_bar(char** dpt_list_array, int dpt_list_count) //Æ®·£Àè¼Ç ÆÄÀÏ ÀÛ¼º ½Ã ÀÔ·ÂÇØ¾ß ÇÒ µ¥ÀÌÅÍ Ãâ·Â
+void disp_student_trans_input_bar(char** dpt_list_array, int dpt_list_count) //íŠ¸ëœì­ì…˜ íŒŒì¼ ì‘ì„± ì‹œ ì…ë ¥í•´ì•¼ í•  ë°ì´í„° ì¶œë ¥
 {
 	system("cls");
 	std::cout << "==============================================================" << std::endl;
-	std::cout << "Insert(I) : »ğÀÔ ¿¬»ê => I, ÇĞ¹ø, ÀÌ¸§, ÇĞ°ú, ÇĞ³â, Á¡¼ö ¼øÀ¸·Î ÀÔ·Â" << std::endl;
-	std::cout << "Delete(D) : »èÁ¦ ¿¬»ê => D, ÇĞ¹ø ¼øÀ¸·Î ÀÔ·Â" << std::endl;
-	std::cout << "Correct(C) : ¼öÁ¤ ¿¬»ê => C, ÇĞ¹ø, ÀÌ¸§, ÇĞ°ú, ÇĞ³â, Á¡¼ö ¼øÀ¸·Î ÀÔ·Â" << std::endl;
+	std::cout << "Insert(I) : ì‚½ì… ì—°ì‚° => I, í•™ë²ˆ, ì´ë¦„, í•™ê³¼, í•™ë…„, ì ìˆ˜ ìˆœìœ¼ë¡œ ì…ë ¥" << std::endl;
+	std::cout << "Delete(D) : ì‚­ì œ ì—°ì‚° => D, í•™ë²ˆ ìˆœìœ¼ë¡œ ì…ë ¥" << std::endl;
+	std::cout << "Correct(C) : ìˆ˜ì • ì—°ì‚° => C, í•™ë²ˆ, ì´ë¦„, í•™ê³¼, í•™ë…„, ì ìˆ˜ ìˆœìœ¼ë¡œ ì…ë ¥" << std::endl;
 	std::cout << "--------------------------------------------------------------" << std::endl;
-	std::cout << "¡Ø ÇĞ¹ø ±ÛÀÚ ¼ö : " << ID_LENGTH << std::endl;
-	std::cout << "¡Ø ÀÌ¸§ ±ÛÀÚ ¼ö : " << NAME_LENGTH << std::endl;
-	std::cout << "¡Ø ÇĞ°ú ±ÛÀÚ ¼ö : " << DPT_LENGTH << std::endl;
-	std::cout << "¡Ø ÇĞ³â ¹üÀ§ : 1 ~ 4" << std::endl;
-	std::cout << "¡Ø Á¡¼ö ¹üÀ§ : 1 ~ 100" << std::endl;
+	std::cout << "â€» í•™ë²ˆ ê¸€ì ìˆ˜ : " << ID_LENGTH << std::endl;
+	std::cout << "â€» ì´ë¦„ ê¸€ì ìˆ˜ : " << NAME_LENGTH << std::endl;
+	std::cout << "â€» í•™ê³¼ ê¸€ì ìˆ˜ : " << DPT_LENGTH << std::endl;
+	std::cout << "â€» í•™ë…„ ë²”ìœ„ : 1 ~ 4" << std::endl;
+	std::cout << "â€» ì ìˆ˜ ë²”ìœ„ : 1 ~ 100" << std::endl;
 	std::cout << "--------------------------------------------------------------" << std::endl;
-	std::cout << "¡Ø ÇĞ°ú ¸ñ·Ï : ";
+	std::cout << "â€» í•™ê³¼ ëª©ë¡ : ";
 
-	for (int i = 0; i < dpt_list_count; i++) //ÇĞ°ú ¸ñ·Ï Ãâ·Â
+	for (int i = 0; i < dpt_list_count; i++) //í•™ê³¼ ëª©ë¡ ì¶œë ¥
 	{
 		if (i == dpt_list_count - 1)
 			std::cout << dpt_list_array[i] << std::endl;
@@ -68,25 +68,25 @@ void disp_student_trans_input_bar(char** dpt_list_array, int dpt_list_count) //Æ
 		//printf("%02d: %s\n", i, dpt_list_array[i]);
 	}
 	std::cout << "--------------------------------------------------------------" << std::endl;
-	std::cout << " ÀÔ·Â Á¾·á : ¿¬»ê ÄÚµå À§Ä¡¿¡ -1 ÀÔ·Â" << std::endl;
+	std::cout << " ì…ë ¥ ì¢…ë£Œ : ì—°ì‚° ì½”ë“œ ìœ„ì¹˜ì— -1 ì…ë ¥" << std::endl;
 	std::cout << "==============================================================" << std::endl;
 	std::cout << ">>";
 }
 
-void disp_student_input_bar(char** dpt_list_array, int dpt_list_count) //¸¶½ºÅÍ ÆÄÀÏ ÀÛ¼º ½Ã ÀÔ·ÂÇØ¾ß ÇÒ µ¥ÀÌÅÍ Ãâ·Â
+void disp_student_input_bar(char** dpt_list_array, int dpt_list_count) //ë§ˆìŠ¤í„° íŒŒì¼ ì‘ì„± ì‹œ ì…ë ¥í•´ì•¼ í•  ë°ì´í„° ì¶œë ¥
 {
 	system("cls");
 	std::cout << "==============================================================" << std::endl;
-	std::cout << "¡Ø ÇĞ¹ø, ÀÌ¸§, ÇĞ°ú, ÇĞ³â, Á¡¼ö ¼øÀ¸·Î ÀÔ·Â" << std::endl;
-	std::cout << "¡Ø ÇĞ¹ø ±ÛÀÚ ¼ö : " << ID_LENGTH << std::endl;
-	std::cout << "¡Ø ÀÌ¸§ ±ÛÀÚ ¼ö : " << NAME_LENGTH << std::endl;
-	std::cout << "¡Ø ÇĞ°ú ±ÛÀÚ ¼ö : " << DPT_LENGTH << std::endl;
-	std::cout << "¡Ø ÇĞ³â ¹üÀ§ : 1 ~ 4" << std::endl;
-	std::cout << "¡Ø Á¡¼ö ¹üÀ§ : 1 ~ 100" << std::endl;
+	std::cout << "â€» í•™ë²ˆ, ì´ë¦„, í•™ê³¼, í•™ë…„, ì ìˆ˜ ìˆœìœ¼ë¡œ ì…ë ¥" << std::endl;
+	std::cout << "â€» í•™ë²ˆ ê¸€ì ìˆ˜ : " << ID_LENGTH << std::endl;
+	std::cout << "â€» ì´ë¦„ ê¸€ì ìˆ˜ : " << NAME_LENGTH << std::endl;
+	std::cout << "â€» í•™ê³¼ ê¸€ì ìˆ˜ : " << DPT_LENGTH << std::endl;
+	std::cout << "â€» í•™ë…„ ë²”ìœ„ : 1 ~ 4" << std::endl;
+	std::cout << "â€» ì ìˆ˜ ë²”ìœ„ : 1 ~ 100" << std::endl;
 	std::cout << "--------------------------------------------------------------" << std::endl;
-	std::cout << "¡Ø ÇĞ°ú ¸ñ·Ï : ";
+	std::cout << "â€» í•™ê³¼ ëª©ë¡ : ";
 	
-	for (int i = 0; i < dpt_list_count; i++) //ÇĞ°ú ¸ñ·Ï Ãâ·Â
+	for (int i = 0; i < dpt_list_count; i++) //í•™ê³¼ ëª©ë¡ ì¶œë ¥
 	{
 		if (i == dpt_list_count - 1)
 			std::cout << dpt_list_array[i] << std::endl;
@@ -95,41 +95,41 @@ void disp_student_input_bar(char** dpt_list_array, int dpt_list_count) //¸¶½ºÅÍ 
 		//printf("%02d: %s\n", i, dpt_list_array[i]);
 	}
 	std::cout << "--------------------------------------------------------------" << std::endl;
-	std::cout << " ÀÔ·Â Á¾·á : ÇĞ¹ø À§Ä¡¿¡ -1 ÀÔ·Â" << std::endl;
+	std::cout << " ì…ë ¥ ì¢…ë£Œ : í•™ë²ˆ ìœ„ì¹˜ì— -1 ì…ë ¥" << std::endl;
 	std::cout << "==============================================================" << std::endl;
 	std::cout << ">>";
 }
 
-void disp_log_description_bar() //·Î±× Å¸ÀÔ¿¡ µû¸¥ ¼³¸í
+void disp_log_description_bar() //ë¡œê·¸ íƒ€ì…ì— ë”°ë¥¸ ì„¤ëª…
 {
 	system("cls");
 	std::cout << "==============================================================" << std::endl;
-	std::cout << "ERROR_TYPE ||		 ½Ã°£		||	 ³»¿ë" << std::endl;
+	std::cout << "ERROR_TYPE ||		 ì‹œê°„		||	 ë‚´ìš©" << std::endl;
 	std::cout << "==============================================================" << std::endl;
 }
 
-void disp_trans_log_description_bar() //·Î±× Å¸ÀÔ¿¡ µû¸¥ ¼³¸í
+void disp_trans_log_description_bar() //ë¡œê·¸ íƒ€ì…ì— ë”°ë¥¸ ì„¤ëª…
 {
 	system("cls");
 	std::cout << "=============================================================================" << std::endl;
-	std::cout << " ERROR_TYPE  ||  ½Ã°£  ||  ¿¬»ê ÄÚµå  || Master Key || Trans Key ||  ³»¿ë" << std::endl;
+	std::cout << " ERROR_TYPE  ||  ì‹œê°„  ||  ì—°ì‚° ì½”ë“œ  || Master Key || Trans Key ||  ë‚´ìš©" << std::endl;
 	std::cout << "=============================================================================" << std::endl;
 }
 
-void disp_error_msg(const char* message) //¿À·ù ¸Ş¼¼Áö Ãâ·Â
+void disp_error_msg(const char* message) //ì˜¤ë¥˜ ë©”ì„¸ì§€ ì¶œë ¥
 {
-	std::cout << "¿À·ù : " << message << std::endl;
+	std::cout << "ì˜¤ë¥˜ : " << message << std::endl;
 }
 
-int input_log_file_mode() //·Î±× Ãâ·ÂÀ» À§ÇÑ ·Î±× Å¸ÀÔ ÀÔ·Â
+int input_log_file_mode() //ë¡œê·¸ ì¶œë ¥ì„ ìœ„í•œ ë¡œê·¸ íƒ€ì… ì…ë ¥
 {
-	//file_mode : 0 - ¸¶½ºÅÍ ÆÄÀÏ, 1 - Æ®·£Àè¼Ç ÆÄÀÏ, 2 - Edit ¿À·ù ·Î±×, 3 - Transaction ¿À·ù ·Î±×
+	//file_mode : 0 - ë§ˆìŠ¤í„° íŒŒì¼, 1 - íŠ¸ëœì­ì…˜ íŒŒì¼, 2 - Edit ì˜¤ë¥˜ ë¡œê·¸, 3 - Transaction ì˜¤ë¥˜ ë¡œê·¸
 	while (1)
 	{
 		system("cls");
 		std::cout << "==============================================================" << std::endl;
-		std::cout << " 1 : Edit ¿À·ù ·Î±× Ãâ·Â" << std::endl;
-		std::cout << " 0 : Transaction ¿À·ù ·Î±× Ãâ·Â" << std::endl;
+		std::cout << " 1 : Edit ì˜¤ë¥˜ ë¡œê·¸ ì¶œë ¥" << std::endl;
+		std::cout << " 0 : Transaction ì˜¤ë¥˜ ë¡œê·¸ ì¶œë ¥" << std::endl;
 		std::cout << "--------------------------------------------------------------" << std::endl;
 		std::cout << " -1 : return" << std::endl;
 		std::cout << "==============================================================" << std::endl;
@@ -140,24 +140,24 @@ int input_log_file_mode() //·Î±× Ãâ·ÂÀ» À§ÇÑ ·Î±× Å¸ÀÔ ÀÔ·Â
 		
 		if (user_input != -1 && user_input != 0 && user_input != 1)
 		{
-			std::cin.clear(); //¿À·ù½ºÆ®¸² ÃÊ±âÈ­
-			std::cin.ignore(INT_MAX, '\n'); //ÀÔ·Â¹öÆÛºñ¿ì±â
+			std::cin.clear(); //ì˜¤ë¥˜ìŠ¤íŠ¸ë¦¼ ì´ˆê¸°í™”
+			std::cin.ignore(INT_MAX, '\n'); //ì…ë ¥ë²„í¼ë¹„ìš°ê¸°
 		}
 		else
 		{
-			if (user_input == 1) return 2; //print_file(2) È£Ãâ
-			if (user_input == 0) return 3; //print_file(1) È£Ãâ
+			if (user_input == 1) return 2; //print_file(2) í˜¸ì¶œ
+			if (user_input == 0) return 3; //print_file(1) í˜¸ì¶œ
 		}
 	}
 }
 
-bool input_init_master_confirm() //ÃÊ±â ¸¶½ºÅÍ ÆÄÀÏ »ı¼º È®ÀÎ
+bool input_init_master_confirm() //ì´ˆê¸° ë§ˆìŠ¤í„° íŒŒì¼ ìƒì„± í™•ì¸
 {
 	while (1)
 	{
 		system("cls");
 		std::cout << "==============================================================" << std::endl;
-		std::cout << "±âÁ¸ ¸¶½ºÅÍ ÆÄÀÏ »èÁ¦ ÈÄ »õ·Î¿î ¸¶½ºÅÍ ÆÄÀÏÀ» »ı¼ºÇÕ´Ï´Ù." << std::endl;
+		std::cout << "ê¸°ì¡´ ë§ˆìŠ¤í„° íŒŒì¼ ì‚­ì œ í›„ ìƒˆë¡œìš´ ë§ˆìŠ¤í„° íŒŒì¼ì„ ìƒì„±í•©ë‹ˆë‹¤." << std::endl;
 		std::cout << " 1 : continue" << std::endl;
 		std::cout << " 0 : return" << std::endl;
 		std::cout << "==============================================================" << std::endl;
@@ -167,21 +167,21 @@ bool input_init_master_confirm() //ÃÊ±â ¸¶½ºÅÍ ÆÄÀÏ »ı¼º È®ÀÎ
 		std::cin >> user_input;
 		if (user_input == 0)
 		{
-			std::cin.clear(); //¿À·ù½ºÆ®¸² ÃÊ±âÈ­
-			std::cin.ignore(INT_MAX, '\n'); //ÀÔ·Â¹öÆÛºñ¿ì±â
+			std::cin.clear(); //ì˜¤ë¥˜ìŠ¤íŠ¸ë¦¼ ì´ˆê¸°í™”
+			std::cin.ignore(INT_MAX, '\n'); //ì…ë ¥ë²„í¼ë¹„ìš°ê¸°
 
 			return false;
 			break;
 		}
 		else if (user_input < 0 || user_input > 1)
 		{
-			std::cin.clear(); //¿À·ù½ºÆ®¸² ÃÊ±âÈ­
-			std::cin.ignore(INT_MAX, '\n'); //ÀÔ·Â¹öÆÛºñ¿ì±â
+			std::cin.clear(); //ì˜¤ë¥˜ìŠ¤íŠ¸ë¦¼ ì´ˆê¸°í™”
+			std::cin.ignore(INT_MAX, '\n'); //ì…ë ¥ë²„í¼ë¹„ìš°ê¸°
 		}
 		else
 		{
-			std::cin.clear(); //¿À·ù½ºÆ®¸² ÃÊ±âÈ­
-			std::cin.ignore(INT_MAX, '\n'); //ÀÔ·Â¹öÆÛºñ¿ì±â
+			std::cin.clear(); //ì˜¤ë¥˜ìŠ¤íŠ¸ë¦¼ ì´ˆê¸°í™”
+			std::cin.ignore(INT_MAX, '\n'); //ì…ë ¥ë²„í¼ë¹„ìš°ê¸°
 
 			return true;
 			break;
@@ -189,18 +189,18 @@ bool input_init_master_confirm() //ÃÊ±â ¸¶½ºÅÍ ÆÄÀÏ »ı¼º È®ÀÎ
 	}
 }
 
-bool input_replace_master_confirm() //¸¶½ºÅÍ ÆÄÀÏ °»½Å ´ëÃ¼ È®ÀÎ
+bool input_replace_master_confirm() //ë§ˆìŠ¤í„° íŒŒì¼ ê°±ì‹  ëŒ€ì²´ í™•ì¸
 {
 	while (1)
 	{
 		system("cls");
 		std::cout << "==============================================================" << std::endl;
-		std::cout << "±âÁ¸ ¸¶½ºÅÍ ÆÄÀÏÀ» °»½Å ÈÄ »õ·Î¿î ¸¶½ºÅÍ ÆÄÀÏ·Î ´ëÃ¼ÇÏ½Ã°Ú½À´Ï±î?" << std::endl;
-		std::cout << "±âÁ¸ ¸¶½ºÅÍ ÆÄÀÏ : master.txt" << std::endl;
-		std::cout << "»õ ¸¶½ºÅÍ ÆÄÀÏ : new_master.txt" << std::endl;
+		std::cout << "ê¸°ì¡´ ë§ˆìŠ¤í„° íŒŒì¼ì„ ê°±ì‹  í›„ ìƒˆë¡œìš´ ë§ˆìŠ¤í„° íŒŒì¼ë¡œ ëŒ€ì²´í•˜ì‹œê² ìŠµë‹ˆê¹Œ?" << std::endl;
+		std::cout << "ê¸°ì¡´ ë§ˆìŠ¤í„° íŒŒì¼ : master.txt" << std::endl;
+		std::cout << "ìƒˆ ë§ˆìŠ¤í„° íŒŒì¼ : new_master.txt" << std::endl;
 		std::cout << "--------------------------------------------------------------" << std::endl;
-		std::cout << " 2 : °»½ÅÇÏ¿© »õ·Î¿î ¸¶½ºÅÍ ÆÄÀÏ »ı¼º¸¸ ¼öÇà(new_master.txt)" << std::endl;
-		std::cout << " 1 : °»½Å ¹× ±âÁ¸ ¸¶½ºÅÍ ÆÄÀÏ ´ëÃ¼(new_master.txt -> master.txt)" << std::endl;
+		std::cout << " 2 : ê°±ì‹ í•˜ì—¬ ìƒˆë¡œìš´ ë§ˆìŠ¤í„° íŒŒì¼ ìƒì„±ë§Œ ìˆ˜í–‰(new_master.txt)" << std::endl;
+		std::cout << " 1 : ê°±ì‹  ë° ê¸°ì¡´ ë§ˆìŠ¤í„° íŒŒì¼ ëŒ€ì²´(new_master.txt -> master.txt)" << std::endl;
 		std::cout << " 0 : return" << std::endl;
 		std::cout << "==============================================================" << std::endl;
 		std::cout << ">>";
@@ -208,72 +208,52 @@ bool input_replace_master_confirm() //¸¶½ºÅÍ ÆÄÀÏ °»½Å ´ëÃ¼ È®ÀÎ
 		int user_input = 0;
 		std::cin >> user_input;
 
-		if (user_input == 2) //°»½Å¸¸
+		if (user_input == 2) //ê°±ì‹ ë§Œ
 		{
-			std::cin.clear(); //¿À·ù½ºÆ®¸² ÃÊ±âÈ­
-			std::cin.ignore(INT_MAX, '\n'); //ÀÔ·Â¹öÆÛºñ¿ì±â
+			std::cin.clear(); //ì˜¤ë¥˜ìŠ¤íŠ¸ë¦¼ ì´ˆê¸°í™”
+			std::cin.ignore(INT_MAX, '\n'); //ì…ë ¥ë²„í¼ë¹„ìš°ê¸°
 
 			return false;
 			break;
 		}
-		else if (user_input == 1) //°»½Å ¹× ´ëÃ¼
+		else if (user_input == 1) //ê°±ì‹  ë° ëŒ€ì²´
 		{
-			std::cin.clear(); //¿À·ù½ºÆ®¸² ÃÊ±âÈ­
-			std::cin.ignore(INT_MAX, '\n'); //ÀÔ·Â¹öÆÛºñ¿ì±â
+			std::cin.clear(); //ì˜¤ë¥˜ìŠ¤íŠ¸ë¦¼ ì´ˆê¸°í™”
+			std::cin.ignore(INT_MAX, '\n'); //ì…ë ¥ë²„í¼ë¹„ìš°ê¸°
 			
 			return true;
 			break;
 		}
 		else
 		{
-			std::cin.clear(); //¿À·ù½ºÆ®¸² ÃÊ±âÈ­
-			std::cin.ignore(INT_MAX, '\n'); //ÀÔ·Â¹öÆÛºñ¿ì±â
+			std::cin.clear(); //ì˜¤ë¥˜ìŠ¤íŠ¸ë¦¼ ì´ˆê¸°í™”
+			std::cin.ignore(INT_MAX, '\n'); //ì…ë ¥ë²„í¼ë¹„ìš°ê¸°
 		}
 	}
 }
 
-void input_main_menu(Student_list** src_list, char** dpt_list_array, int dpt_list_count) //¸ŞÀÎ ¸Ş´º¿¡ ´ëÇÑ »ç¿ëÀÚ ÀÔ·Â
+void input_main_menu(Student_list** src_list, char** dpt_list_array, int dpt_list_count) //ë©”ì¸ ë©”ë‰´ì— ëŒ€í•œ ì‚¬ìš©ì ì…ë ¥
 {
 	while (1)
 	{
-		int user_input = 0; //»ç¿ëÀÚ ÀÔ·Â °ª
+		int user_input = 0; //ì‚¬ìš©ì ì…ë ¥ ê°’
 
 		/***debug***/
-		Student_list* tmp_student_head = NULL; //±âÁ¸ ¸®½ºÆ®ÀÇ Ã¹ ¹øÂ° ÇĞ»ı Á¤º¸ ÀÓ½ÃÀúÀå
+		Student_list* tmp_student_head = NULL; //ê¸°ì¡´ ë¦¬ìŠ¤íŠ¸ì˜ ì²« ë²ˆì§¸ í•™ìƒ ì •ë³´ ì„ì‹œì €ì¥
 		char buffer_id[9] = { 0, };
 		/***debug***/
 
 		disp_main_menu();
 		std::cin >> user_input;
 
-		std::cin.clear(); //¿À·ù½ºÆ®¸² ÃÊ±âÈ­
-		std::cin.ignore(INT_MAX, '\n'); //ÀÔ·Â¹öÆÛºñ¿ì±â
+		std::cin.clear(); //ì˜¤ë¥˜ìŠ¤íŠ¸ë¦¼ ì´ˆê¸°í™”
+		std::cin.ignore(INT_MAX, '\n'); //ì…ë ¥ë²„í¼ë¹„ìš°ê¸°
 
 		switch (user_input)
 		{
 		case EXCEPTION_HANDLING_VALUE: //debug
 			system("cls");
-			(*src_list) = new Student_list("D", "12345", "KIM", "DP", 1, 100); //add 
-
-			std::cout << "sizeof dpt_list_array : " << sizeof(dpt_list_array) <<"\n"<< std::endl;
-			std::cout << "sizeof *(&dpt_list_array) : " << sizeof * (&dpt_list_array) << "\n" << std::endl;
-			std::cout << "sizeof &dpt_list_array : " << sizeof&(dpt_list_array) << "\n" << std::endl;
-			std::cout << "sizeof (*dpt_list_array) : " << sizeof(*dpt_list_array) << "\n" << std::endl;
-
-			std::cout << "sizeof src_list : " << sizeof(src_list) << "\n" << std::endl;
-			std::cout << "sizeof *(&src_list) : " << sizeof * (&src_list) << "\n" << std::endl;
-			std::cout << "sizeof &src_list : " << sizeof&(src_list) << "\n" << std::endl;
-			std::cout << "sizeof (*src_list) : " << sizeof(*src_list) << "\n" << std::endl;
-			
-			if (src_list != NULL) //src_list == *(&src_list)
-				std::cout << "src_list exist :"<<src_list<< "\n" << std::endl;
-			if (&src_list != NULL) //src_listÀÇ ·¹ÆÛ·±½º(ÂüÁ¶ÀÚ), ¿øº»À» ÂüÁ¶
-				std::cout << "&src_list exist :"<<&src_list << "\n" << std::endl;
-			if(*src_list != NULL) //*src_list°¡ °¡¸®Å°´Â À§Ä¡¸¦ ÂüÁ¶, Student_listÇüÅÂÀÇ src_listÀÇ ÁÖ¼Ò°ª
-				std::cout << "(*src_list) exist :"<<(*src_list) << "\n" <<std::endl;
-			if (*(&src_list) != NULL) //src_list == *(&src_list)
-				std::cout << "*(&src_list) exist :" << *(&src_list) << "\n" << std::endl;
-			
+			(*src_list) = new Student_list("D", "12345", "KIM", "DP", 1, 100); //add 			
 		
 			std::cout << "dpt_list_count:"<<dpt_list_count << "\n";
 			for (int i = 0; i < dpt_list_count;i++)
@@ -323,39 +303,39 @@ void input_main_menu(Student_list** src_list, char** dpt_list_array, int dpt_lis
 			system("pause");
 			break;
 
-		case 1: //ÃÊ±â ¸¶½ºÅÍ ÆÄÀÏ »ı¼º
+		case 1: //ì´ˆê¸° ë§ˆìŠ¤í„° íŒŒì¼ ìƒì„±
 			create_file(src_list, dpt_list_array, dpt_list_count, 0);
 			system("pause");
 			break;
 
-		case 2: //¸¶½ºÅÍ ÆÄÀÏ Ãâ·Â
+		case 2: //ë§ˆìŠ¤í„° íŒŒì¼ ì¶œë ¥
 			print_file(0);
 			system("pause");
 			break;
 
-		case 3: //Æ®·£Àè¼Ç ÆÄÀÏ ÀÛ¼º
+		case 3: //íŠ¸ëœì­ì…˜ íŒŒì¼ ì‘ì„±
 			create_file(src_list, dpt_list_array, dpt_list_count, 1);
 			system("pause");
 			break;
 
-		case 4: //Æ®·£Àè¼Ç ÆÄÀÏ Ãâ·Â
+		case 4: //íŠ¸ëœì­ì…˜ íŒŒì¼ ì¶œë ¥
 			print_file(1);
 			system("pause");
 			break;
 
-		case 5: //¸¶½ºÅÍ ÆÄÀÏ °»½Å
+		case 5: //ë§ˆìŠ¤í„° íŒŒì¼ ê°±ì‹ 
 			update_master(input_replace_master_confirm());
 			system("pause");
 			break;
 
-		case 6: //·Î±× ÆÄÀÏ Ãâ·Â
+		case 6: //ë¡œê·¸ íŒŒì¼ ì¶œë ¥
 			print_file(input_log_file_mode());
 			system("pause");
 			break;
 
 		case 7: //exit
-			deallocate_memory(src_list, dpt_list_array, dpt_list_count, 1); //ÇĞ»ı ¸®½ºÆ® ¸Ş¸ğ¸® ÇØÁ¦
-			deallocate_memory(src_list, dpt_list_array, dpt_list_count, 0); //ÇĞ°ú ¹è¿­ ¸Ş¸ğ¸® ÇØÁ¦
+			deallocate_memory(src_list, dpt_list_array, dpt_list_count, 1); //í•™ìƒ ë¦¬ìŠ¤íŠ¸ ë©”ëª¨ë¦¬ í•´ì œ
+			deallocate_memory(src_list, dpt_list_array, dpt_list_count, 0); //í•™ê³¼ ë°°ì—´ ë©”ëª¨ë¦¬ í•´ì œ
 			exit(1);
 				
 		default:
