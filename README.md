@@ -35,5 +35,3 @@
 - transKey : Unique Key values for the transaction record that can be sorted
 </strong>
 <br></br>
-
-[![HitCount](http://hits.dwyl.com/hyung8789/Sequential_File_Structure_Simulator.svg)](http://hits.dwyl.com/hyung8789/Sequential_File_Structure_Simulator)
